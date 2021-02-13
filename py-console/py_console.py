@@ -81,9 +81,8 @@ def PrintMessage(message, prefix = "none", forceColor = None, colorMessage = Fal
     if log == True:
         Logger(message, prefix)
 
-# Placeholder funtion for inputs with color
 def UserInput(prefix, color):
-    print(prefix)
+    input(message)
 
 # Premade tools and functions/lambdas 
 # This must be run when the program starts to clear a color bug on Windows consoles.
