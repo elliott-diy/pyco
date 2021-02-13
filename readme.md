@@ -1,9 +1,9 @@
 # PythonTools
 Some useful functions and color codes for Python console programming.
-
 ## Functions
-### ```PrintMessage(message, prefix, forceColor, forceLog)```
-Print a message with color and a customizable prefix. Includes an option to log the message.
+### ```PrintMessage(message, prefix, forceColor, colorMessage, forceLog)```
+Print a message with color and a customizable prefix. Includes an option to log the message,  
+and an option whether to color the whole message or just the prefix.
 ### ```Logger(message, prefix)```
 Log a message into a log file. Done automatically for errors and warnings.
 ### ```ClearLog()```
@@ -28,3 +28,5 @@ BrightMagenta = "\u001b[35;1m"
 BrightCyan = "\u001b[36;1m"
 BrightWhite = "\u001b[37;1m"
 ```
+## License
+[MIT License](https://choosealicense.com/licenses/mit/)
