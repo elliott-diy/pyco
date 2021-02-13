@@ -1,0 +1,5 @@
+[12/02/2021, 19:57:54] [INFO] Cleared log file contents
+[12/02/2021, 19:57:54] [ERROR] This is an error message.
+[12/02/2021, 19:57:54] [WARNING] This is a warning message.
+[12/02/2021, 19:57:54] [ERROR] You can even override preset message colors.
+[12/02/2021, 19:57:54] [INFO] This message has been logged in the log file

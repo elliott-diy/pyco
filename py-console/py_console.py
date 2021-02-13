@@ -68,7 +68,7 @@ def PrintMessage(message, prefix = "none", forceColor = None, forceLog = False):
         color = White
 
     else:
-        prefix = prefix.capitalize()
+        #prefix = prefix.capitalize()
         prefix = "[" + prefix + "] "
 
     if forceLog == True:
@@ -85,12 +85,20 @@ def PrintMessage(message, prefix = "none", forceColor = None, forceLog = False):
 # This must be run when the program starts to clear a color bug on Windows consoles.
 clear = lambda: os.system('cls' if os.name == 'nt' else 'clear')
 
+# Old version of the same function but in different form
+# Repaced by the lambda above
+#def ClearScreen():
+#    if os.name == "posix":
+#        os.system("clear")
+#    else:
+#      os.system("cls")
+
 # Get the directory containing the project files
 workingDir = Path(__file__).parent
 projectDir = Path(__file__).parent.parent
 logDir = os.path.join(projectDir, "logs", "log.txt")
 
-def Logger(message, prefix):
+def Logger(message = "", prefix = ""):
     # Get the date and time
     dateTime = datetime.now()
     dateTime = dateTime.strftime("%d/%m/%Y, %H:%M:%S")
@@ -107,11 +115,15 @@ def Logger(message, prefix):
 
 # Function to clear the log file. 
 def ClearLog():
-    dateTime = datetime.now()
-    dateTime = dateTime.strftime("%d/%m/%Y, %H:%M:%S")
-    logfile = open(logDir, "w")
-    logfile.write("[" + dateTime + "] " + "[INFO] " + "Cleared log file contents" + "\n")
-    logfile.close()
+    if os.path.exists(logDir):
+        dateTime = datetime.now()
+        dateTime = dateTime.strftime("%d/%m/%Y, %H:%M:%S")
+        logfile = open(logDir, "w")
+        logfile.write("[" + dateTime + "] " + "[INFO] " + "Cleared log file contents" + "\n")
+        logfile.close()
+
+    else:
+        Logger()
 
 # Clear the error log file on startup
 ClearLog()
