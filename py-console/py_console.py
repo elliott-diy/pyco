@@ -1,3 +1,15 @@
+#  _____               _____                      _      
+# |  __ \             / ____|                    | |     
+# | |__) |   _ ______| |     ___  _ __  ___  ___ | | ___ 
+# |  ___/ | | |______| |    / _ \| '_ \/ __|/ _ \| |/ _ \
+# | |   | |_| |      | |___| (_) | | | \__ \ (_) | |  __/
+# |_|    \__, |       \_____\___/|_| |_|___/\___/|_|\___|
+#         __/ |                                          
+#        |___/
+#
+# Made by Duplexes and LemonPi314
+
+# (Formerly)
 #  _____       _   _              _______          _     
 # |  __ \     | | | |            |__   __|        | |    
 # | |__) |   _| |_| |__   ___  _ __ | | ___   ___ | |___ 
@@ -9,13 +21,13 @@
 #
 # Made by Duplexes
 
-
 # Imports needed to use this code
 import os 
 from datetime import datetime
 from pathlib import Path
 
 # Massive list of colors to easily use on all console systems
+Reset = "\u001b[0m"                 # Used in premade messages. Must be included to function correctly.
 Black = "\u001b[30m"    
 Red = "\u001b[31m"
 Green = "\u001b[32m"
@@ -24,7 +36,6 @@ Blue = "\u001b[34m"
 Magenta =  "\u001b[35m"
 Cyan = "\u001b[36m"
 White = "\u001b[37m"                # Used in premade messages. Must be included to function correctly.
-Reset = "\u001b[0m"                 # Used in premade messages. Must be included to function correctly.
 BrightBlack = "\u001b[30;1m"
 BrightRed = "\u001b[31;1m"          # Used in premade messages. Must be included to function correctly. 
 BrightGreen = "\u001b[32;1m"        # Used in premade messages. Must be included to function correctly.
@@ -63,6 +74,7 @@ def PrintMessage(message, prefix = "none", forceColor = None, colorMessage = Fal
     elif prefix.lower() == "none":
         prefix = ""
         color = White
+
     if prefix != "":
         prefix = "[" + prefix + "] "
 
@@ -81,8 +93,13 @@ def PrintMessage(message, prefix = "none", forceColor = None, colorMessage = Fal
     if log == True:
         Logger(message, prefix)
 
-def UserInput(prefix, color):
-    input(message)
+# Premade input prompt function
+# Parameters:
+# prefix - The prompt before the program asks for input from the user
+# prefixColor - The color for the prompt
+# inputColor - The color for the user's input
+def UserInput(prefix = "", prefixColor = White, inputColor = White):
+    input(prefixColor + prefix + Reset+ inputColor)
 
 # Premade tools and functions/lambdas 
 # This must be run when the program starts to clear a color bug on Windows consoles.
