@@ -114,8 +114,8 @@ clear = lambda: os.system('cls' if os.name == 'nt' else 'clear')
 #      os.system("cls")
 
 # Get the directory containing the project files
-workingDir = Path(__file__).parent
-projectDir = Path(__file__).parent.parent
+workingDir = os.getcwd()
+projectDir = Path(workingDir).parent
 logDir = os.path.join(projectDir, "logs", "log.txt")
 
 # Get the type of the operating system being used

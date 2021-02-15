@@ -4,6 +4,9 @@ Some useful functions and color codes for Python console programming.
 ### ```PrintMessage(message, prefix, forceColor, colorMessage, forceLog)```
 Print a message with color and a customizable prefix. Includes an option to log the message,  
 and an option whether to color the whole message or just the prefix.
+### ```UserInput(prefix, prefixColor, inputColor)```
+Print a prompt with color and ask for input from the user.  
+Options to set colors for the prefix and input separately.
 ### ```Logger(message, prefix)```
 Log a message into a log file. Done automatically for errors and warnings.
 ### ```ClearLog()```
