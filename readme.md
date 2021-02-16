@@ -23,16 +23,17 @@ print(ConsoleMessage.Success + "Somthing good happend!")
 ```
 #### What it looks like
 ![Example Image](https://i.imgur.com/CO7ektk.png "Example Image")
-###Colors
+
+### Colors
 Py-Console has a built-in color system that is designed to be intuitive to use. Py-Console automatically clears the console on Windows consoles to properly display color codes. See the usage below.
 
-####Normal Colors
+#### Normal Colors
 ```python
 import Py-Console
 
 print(ConsoleColor.Red + "I'm red!")
 ```
-####Bright Colors
+#### Bright Colors
 ```python
 import Py-Console
 
