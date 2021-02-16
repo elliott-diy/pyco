@@ -1,5 +1,5 @@
-[14/02/2021, 08:41:54] [INFO] Cleared log file contents
-[14/02/2021, 08:41:54] [ERROR] This is an error message.
-[14/02/2021, 08:41:54] [WARNING] This is a warning message.
-[14/02/2021, 08:41:54] [ERROR] You can even override preset message colors.
-[14/02/2021, 08:41:54] [INFO] This message has been logged in the log file.
+[15/02/2021, 18:28:42] [INFO] Cleared log file contents
+[15/02/2021, 18:28:42] [ERROR] This is an error message.
+[15/02/2021, 18:28:42] [WARNING] This is a warning message.
+[15/02/2021, 18:28:42] [ERROR] You can even override preset message colors.
+[15/02/2021, 18:28:42] [INFO] This message has been logged in the log file.

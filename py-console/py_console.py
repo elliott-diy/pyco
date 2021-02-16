@@ -27,23 +27,24 @@ from datetime import datetime
 from pathlib import Path
 
 # Massive list of colors to easily use on all console systems
-Reset = "\u001b[0m"                 # Used in premade messages. Must be included to function correctly.
-Black = "\u001b[30m"    
-Red = "\u001b[31m"
-Green = "\u001b[32m"
-Yellow = "\u001b[33m"
-Blue = "\u001b[34m"
-Magenta =  "\u001b[35m"
-Cyan = "\u001b[36m"
-White = "\u001b[37m"                # Used in premade messages. Must be included to function correctly.
-BrightBlack = "\u001b[30;1m"
-BrightRed = "\u001b[31;1m"          # Used in premade messages. Must be included to function correctly. 
-BrightGreen = "\u001b[32;1m"        # Used in premade messages. Must be included to function correctly.
-BrightYellow = "\u001b[33;1m"       # Used in premade messages. Must be included to function correctly.
-BrightBlue = "\u001b[34;1m"
-BrightMagenta = "\u001b[35;1m"
-BrightCyan = "\u001b[36;1m"         # Used in premade messages. Must be included to function correctly.
-BrightWhite = "\u001b[37;1m"
+class ConsoleColor:
+    Reset = "\u001b[0m"
+    Black = "\u001b[30m"
+    Red = "\u001b[31m"
+    Green = "\u001b[32m"
+    Yellow = "\u001b[33m"
+    Blue = "\u001b[34m"
+    Magenta =  "\u001b[35m"
+    Cyan = "\u001b[36m"
+    White = "\u001b[37m"
+    BrightBlack = "\u001b[30;1m"
+    BrightRed = "\u001b[31;1m"
+    BrightGreen = "\u001b[32;1m"
+    BrightYellow = "\u001b[33;1m"
+    BrightBlue = "\u001b[34;1m"
+    BrightMagenta = "\u001b[35;1m"
+    BrightCyan = "\u001b[36;1m"
+    BrightWhite = "\u001b[37;1m"
 
 # Premade message function
 # Parameters:
@@ -55,25 +56,25 @@ BrightWhite = "\u001b[37;1m"
 # It is also possible to enter a custom prefix
 def PrintMessage(message, prefix = "none", forceColor = None, colorMessage = False, forceLog = False):
     log = False
-    color = White
+    color = ConsoleColor.White
 
     if prefix.lower() == "info":
-        color = White
+        color = ConsoleColor.White
 
     elif prefix.lower() == "success":
-        color = BrightGreen
+        color = ConsoleColor.BrightGreen
 
     elif prefix.lower() == "warning":
-        color = BrightYellow
+        color = ConsoleColor.BrightYellow
         log = True
 
     elif prefix.lower() == "error":
-        color = BrightRed
+        color = ConsoleColor.BrightRed
         log = True
 
     elif prefix.lower() == "none":
         prefix = ""
-        color = White
+        color = ConsoleColor.White
 
     if prefix != "":
         prefix = "[" + prefix + "] "
@@ -85,10 +86,10 @@ def PrintMessage(message, prefix = "none", forceColor = None, colorMessage = Fal
         color = forceColor
 
     if colorMessage == False:
-        print(color + prefix + Reset + message)
+        print(color + prefix + ConsoleColor.Reset + message)
 
     if colorMessage == True:
-        print(color + prefix + message + Reset)
+        print(color + prefix + message + ConsoleColor.Reset)
 
     if log == True:
         Logger(message, prefix)
@@ -98,8 +99,8 @@ def PrintMessage(message, prefix = "none", forceColor = None, colorMessage = Fal
 # prefix - The prompt before the program asks for input from the user
 # prefixColor - The color for the prompt
 # inputColor - The color for the user's input
-def UserInput(prefix = "", prefixColor = White, inputColor = White):
-    input(prefixColor + prefix + Reset+ inputColor)
+def UserInput(prefix = "", prefixColor = ConsoleColor.White, inputColor = ConsoleColor.White):
+    input(prefixColor + prefix + ConsoleColor.Reset+ inputColor)
 
 # Premade tools and functions/lambdas 
 # This must be run when the program starts to clear a color bug on Windows consoles.
