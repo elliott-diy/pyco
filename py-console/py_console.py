@@ -45,6 +45,13 @@ class ConsoleColor:
     BrightMagenta = "\u001b[35;1m"
     BrightCyan = "\u001b[36;1m"
     BrightWhite = "\u001b[37;1m"
+class ConsoleMessage:
+    Warning = "[\u001b[33;1mWarning\u001b[0m] "
+    Error = "[\u001b[31;1mError\u001b[0m] "
+    Success = "[\u001b[32;1mSuccess\u001b[0m] "
+    Info = "[\u001b[34;1mInfo\u001b[0m] "
+
+    
 
 # Premade message function
 # Parameters:
@@ -151,3 +158,10 @@ def ClearLog():
 
 # Clear the error log file on startup
 ClearLog()
+
+clear()
+print(ConsoleMessage.Warning + "Somthing could be broken!")
+print(ConsoleMessage.Error + "Error 404!")
+print(ConsoleMessage.Info + "Heres some info!")
+print(ConsoleMessage.Success + "Somthing good happend!")
+input("stop")
