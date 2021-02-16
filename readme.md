@@ -1,35 +1,48 @@
-# PythonTools
-Some useful functions and color codes for Python console programming.
-## Functions
-### ```PrintMessage(message, prefix, forceColor, colorMessage, forceLog)```
-Print a message with color and a customizable prefix. Includes an option to log the message,  
-and an option whether to color the whole message or just the prefix.
-### ```UserInput(prefix, prefixColor, inputColor)```
-Print a prompt with color and ask for input from the user.  
-Options to set colors for the prefix and input separately.
-### ```Logger(message, prefix)```
-Log a message into a log file. Done automatically for errors and warnings.
-### ```ClearLog()```
-Clear the log file to save some disk space. The log file is cleared automatically when the script starts.
-## Color Codes
-```Python
-Black = "\u001b[30m"    
-Red = "\u001b[31m"
-Green = "\u001b[32m"
-Yellow = "\u001b[33m"
-Blue = "\u001b[34m"
-Magenta =  "\u001b[35m"
-Cyan = "\u001b[36m"
-White = "\u001b[37m"
-Reset = "\u001b[0m"
-BrightBlack = "\u001b[30;1m"
-BrightRed = "\u001b[31;1m"
-BrightGreen = "\u001b[32;1m"
-BrightYellow = "\u001b[33;1m"
-BrightBlue = "\u001b[34;1m"
-BrightMagenta = "\u001b[35;1m"
-BrightCyan = "\u001b[36;1m"
-BrightWhite = "\u001b[37;1m"
+# Py-Console
+
+Py-Console is a python library designed to help developers make nicer command line applications faster. It has cross-platform compatibility(Hopefully!) for Windows and Linux and supports color on both as well. There are also numerous small quality of life features that will make your programming easier, such as a built-in error logger and message handler.
+## Installation
+
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install Py-Console. 
+
+```bash
+pip install Py-Console
 ```
+
+## Usage
+###Message Handler
+###Message Prefixes
+Py-Console has four premade prefixes that you can use in your program. The usage is below and what it looks like in the console are below.
+```python
+import Py-Console
+
+print(ConsoleMessage.Warning + "Somthing could be broken!")
+print(ConsoleMessage.Error + "Error 404!")
+print(ConsoleMessage.Info + "Heres some info!")
+print(ConsoleMessage.Success + "Somthing good happend!")
+```
+#### What it looks like
+![Example Image](https://i.imgur.com/CO7ektk.png "Example Image")
+###Colors
+Py-Console has a built-in color system that is designed to be intuitive to use. Py-Console automatically clears the console on Windows consoles to properly display color codes. See the usage below.
+
+####Normal Colors
+```python
+import Py-Console
+
+print(ConsoleColor.Red + "I'm red!")
+```
+####Bright Colors
+```python
+import Py-Console
+
+print(ConsoleColor.BrightRed + "I'm bright red!")
+```
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
 ## License
-[MIT License](https://choosealicense.com/licenses/mit/)
+[MIT](https://choosealicense.com/licenses/mit/)
