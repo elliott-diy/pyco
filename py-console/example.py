@@ -1,4 +1,4 @@
-from py_console import *
+from Py_Console import *
 
 # Clear the screen. Fixes a bug in Windows consoles where colors wouldn't show if the console wasn't cleared.
 clear()

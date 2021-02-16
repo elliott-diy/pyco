@@ -3,13 +3,14 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>84853567-84cd-4d7f-9cb3-7ca2a553669f</ProjectGuid>
-    <ProjectHome>.</ProjectHome>
-    <StartupFile>py_console.py</StartupFile>
+    <ProjectHome>
+    </ProjectHome>
+    <StartupFile>Py_Console.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>py-console</Name>
+    <Name>Py-Console</Name>
     <RootNamespace>py-console</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -27,7 +28,7 @@
     <Compile Include="__init__.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="py_console.py" />
+    <Compile Include="Py_Console.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

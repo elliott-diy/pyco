@@ -8,29 +8,7 @@
 #        |___/
 #
 # Made by Duplexes and LemonPi314
-# Github: https://github.com/Duplexes/Py-Console
-
-
-
-
-# Copyright 2020 Py-Console contributors
-
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-
-#    http://www.apache.org/licenses/LICENSE-2.0
-
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
-
-
-
-
+# https://github.com/Duplexes/Py-Console
 
 # Imports needed to use this code
 import os 
@@ -91,8 +69,8 @@ def PrintMessage(message, prefix = "none", messageColor = ConsoleColor.White, pr
     Parameters:
     message - The message you want to print
     prefix - The label before the message
-    forceColor - Specify a color to be used instead of the default
-    colorMessage - Choose whether to color only the prefix or the whole message
+    messageColor - The color for the message
+    prefixColor - The color for the prefix
     colorBrackets - Choose whether to color the square brackets surrounding the prefix or not
     forceLog - Force the message to be logged regardless of the label
     It is also possible to enter a custom prefix

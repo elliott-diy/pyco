@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "py-console", "py-console\py-console.pyproj", "{84853567-84CD-4D7F-9CB3-7CA2A553669F}"
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Py-Console", "py-console\Py-Console.pyproj", "{84853567-84CD-4D7F-9CB3-7CA2A553669F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
