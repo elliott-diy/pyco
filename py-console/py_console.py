@@ -8,18 +8,29 @@
 #        |___/
 #
 # Made by Duplexes and LemonPi314
+# Github: https://github.com/Duplexes/Py-Console
 
-# (Formerly)
-#  _____       _   _              _______          _     
-# |  __ \     | | | |            |__   __|        | |    
-# | |__) |   _| |_| |__   ___  _ __ | | ___   ___ | |___ 
-# |  ___/ | | | __| '_ \ / _ \| '_ \| |/ _ \ / _ \| / __|
-# | |   | |_| | |_| | | | (_) | | | | | (_) | (_) | \__ \
-# |_|    \__, |\__|_| |_|\___/|_| |_|_|\___/ \___/|_|___/
-#         __/ |                                          
-#        |___/                                           
-#
-# Made by Duplexes
+
+
+
+# Copyright 2020 Py-Console contributors
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+#    http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+
+
+
+
 
 # Imports needed to use this code
 import os 
