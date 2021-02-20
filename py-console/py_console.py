@@ -18,6 +18,14 @@ from pathlib import Path
 # This must be run when the program starts to clear a color bug on Windows consoles
 clear = lambda: os.system('cls' if os.name == 'nt' else 'clear')
 
+# Old version of the same function but in different form
+# Repaced by the lambda above
+#def ClearScreen():
+#    if os.name == "posix":
+#        os.system("clear")
+#    else:
+#      os.system("cls")
+
 # Get the directory containing the project files
 workingDir = os.getcwd()
 projectDir = Path(workingDir).parent
@@ -130,14 +138,6 @@ def UserInput(prefix = "", prefixColor = ConsoleColor.White, inputColor = Consol
     inputColor - The color for the user's input
     """
     input(prefixColor + prefix + ConsoleColor.Reset+ inputColor)
-
-# Old version of the same function but in different form
-# Repaced by the lambda above
-#def ClearScreen():
-#    if os.name == "posix":
-#        os.system("clear")
-#    else:
-#      os.system("cls")
 
 # Function to log entries into a text file
 def Logger(message = "", prefix = ""):
