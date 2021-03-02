@@ -43,6 +43,7 @@ class ConsoleColor:
     """
     A list of colors as console escape codes.
     """
+
     Reset = "\u001b[0m"
     Black = "\u001b[30m"
     Red = "\u001b[31m"
@@ -83,6 +84,7 @@ def PrintMessage(message, prefix = "none", messageColor = ConsoleColor.White, pr
     forceLog - Force the message to be logged regardless of the label
     It is also possible to enter a custom prefix
     """
+
     log = False
     color = ConsoleColor.White
 
@@ -137,6 +139,7 @@ def UserInput(prefix = "", prefixColor = ConsoleColor.White, inputColor = Consol
     prefixColor - The color for the prompt
     inputColor - The color for the user's input
     """
+
     input(prefixColor + prefix + ConsoleColor.Reset+ inputColor)
 
 # Function to log entries into a text file
@@ -148,6 +151,7 @@ def Logger(message = "", prefix = ""):
     message - The message to be logged
     prefix - The prefix before the message, and after the timestamp
     """
+
     # Get the date and time
     dateTime = datetime.now()
     dateTime = dateTime.strftime("%d/%m/%Y, %H:%M:%S")
@@ -157,7 +161,7 @@ def Logger(message = "", prefix = ""):
         logfile.write("[" + dateTime + "] " + "[" + prefix + "] " + message + "\n")
 
     # If the log file doesn't exist, create a new one and log the message
-    else: 
+    else:
         logfile = open(logDir, "x")
         logfile.write("[" + dateTime + "] " + "[ERROR] " + "Log file missing or inaccessible. Creating a new one." + "\n")
         ErrorLogger(message, prefix)
@@ -168,6 +172,7 @@ def ClearLog():
     Clear the log file to save disk space.
     The file will still exist with one entry, it will not get deleted.
     """
+
     if os.path.exists(logDir):
         dateTime = datetime.now()
         dateTime = dateTime.strftime("%d/%m/%Y, %H:%M:%S")
