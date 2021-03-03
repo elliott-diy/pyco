@@ -5,6 +5,17 @@ VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "pyconsole", "pyconsole\pyconsole.pyproj", "{84853567-84CD-4D7F-9CB3-7CA2A553669F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{83F504CA-9D21-46A1-8D3B-E380AFC32212}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		license.txt = license.txt
+		pyproject.toml = pyproject.toml
+		readme.md = readme.md
+		setup.cfg = setup.cfg
+		setup.py = setup.py
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

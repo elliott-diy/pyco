@@ -1,11 +1,11 @@
 
-# py_console
-```py_console``` is a Python library designed to help developers make nicer command line applications faster. It has cross-platform compatibility for Windows and Linux and supports color on both as well. There are also numerous small quality of life features that will make your programming easier, such as a built-in error logger and message handler.
+# pyconsole
+```pyconsole``` is a Python library designed to help developers make nicer command line applications faster. It has cross-platform compatibility for Windows and Linux and supports color on both as well. There are also numerous small quality of life features that will make your programming easier, such as a built-in error logger and message handler.
 
 ## Installation
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install ```py_console```. 
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install ```pyconsole```. 
 ```bash
-pip install py_console
+pip install pyconsole
 ```
 
 ## Usage
@@ -28,7 +28,7 @@ You may override preset colors.
 #### Examples
 ##### Code
 ```python
-import py_console
+import pyconsole
 
 PrintMessage("Generic message.")
 PrintMessage("Error message.", "Error")
@@ -56,7 +56,7 @@ image here
 #### Examples
 ##### Code
 ```python
-import py_console
+import pyconsole
 
 UserInput("My prompt.")
 UserInput("Prompt in green", ConsoleColor.Green)
@@ -67,12 +67,12 @@ UserInput("Prompt in green, user input  in blue", ConsoleColor.Green, ConsoleCol
 image here
 
 ### Message Prefixes
-```py_console``` has four premade prefixes that you can use in your program.
+```pyconsole``` has four premade prefixes that you can use in your program.
 
 #### Examples
 ##### Code
 ```python
-import py_console
+import pyconsole
 
 print(ConsoleMessage.Success + "Somthing good happend!")
 print(ConsoleMessage.Error + "Error 404!")
@@ -84,18 +84,18 @@ print(ConsoleMessage.Info + "Heres some info!")
 ![Example Image](https://i.imgur.com/CO7ektk.png "Example Image")
 
 ### Colors
-```py_console``` has a built-in color system that is designed to be intuitive to use. py_console automatically clears the console on Windows consoles to properly display color codes. See the usage below.
+```pyconsole``` has a built-in color system that is designed to be intuitive to use. pyconsole automatically clears the console on Windows consoles to properly display color codes. See the usage below.
 
 #### Normal Colors
 ```python
-import py_console
+import pyconsole
 
 print(ConsoleColor.Red + "I'm red!")
 ```
 
 #### Bright Colors
 ```python
-import py_console
+import pyconsole
 
 print(ConsoleColor.BrightRed + "I'm bright red!")
 ```
