@@ -1,11 +1,11 @@
 
-# Py-Console
-Py-Console is a python library designed to help developers make nicer command line applications faster. It has cross-platform compatibility(Hopefully!) for Windows and Linux and supports color on both as well. There are also numerous small quality of life features that will make your programming easier, such as a built-in error logger and message handler.
+# py_console
+```py_console``` is a Python library designed to help developers make nicer command line applications faster. It has cross-platform compatibility for Windows and Linux and supports color on both as well. There are also numerous small quality of life features that will make your programming easier, such as a built-in error logger and message handler.
 
 ## Installation
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install Py-Console. 
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install ```py_console```. 
 ```bash
-pip install Py-Console
+pip install py_console
 ```
 
 ## Usage
@@ -18,17 +18,17 @@ Certain prefix types like `Error` and `Success` are automatically highlighted in
 You may override preset colors.
 
 #### Parameters
-`message` - The message you want to print in the console. Default is `""`.
-`prefix` - The prefix before the message. Default is `"none"`.
-`messageColor` - The color of the message. Default is `ConsoleColor.White`.
-`prefixColor` - The color of the prefix. Default is `ConsoleColor.White`.
-`colorBrackets` - Specify whether to color the brackets surrounding the prefix or not. Default is `False`.
-`forceLog` - Force the message to be logged in the log file. Default is `False`.
+`message` - The message you want to print in the console. Default is `""`.  
+`prefix` - The prefix before the message. Default is `"none"`.  
+`messageColor` - The color of the message. Default is `ConsoleColor.White`.  
+`prefixColor` - The color of the prefix. Default is `ConsoleColor.White`.  
+`colorBrackets` - Specify whether to color the brackets surrounding the prefix or not. Default is `False`.  
+`forceLog` - Force the message to be logged in the log file. Default is `False`.  
 
 #### Examples
 ##### Code
 ```python
-import Py_Console
+import py_console
 
 PrintMessage("Generic message.")
 PrintMessage("Error message.", "Error")
@@ -49,14 +49,14 @@ image here
 `UserInput(prefix, prefixColor, inputColor)`
 
 #### Parameters
-`prefix` - The prompt or question before the user's unput. Default is `""`.
-`prefixColor` - The color of the prefix. Default is `ConsoleColor.White`.
-`inputColor` - The color of the user's input. Default is `ConsoleColor.White`.
+`prefix` - The prompt or question before the user's unput. Default is `""`.  
+`prefixColor` - The color of the prefix. Default is `ConsoleColor.White`.  
+`inputColor` - The color of the user's input. Default is `ConsoleColor.White`.  
 
 #### Examples
 ##### Code
 ```python
-import Py_Console
+import py_console
 
 UserInput("My prompt.")
 UserInput("Prompt in green", ConsoleColor.Green)
@@ -67,12 +67,12 @@ UserInput("Prompt in green, user input  in blue", ConsoleColor.Green, ConsoleCol
 image here
 
 ### Message Prefixes
-Py-Console has four premade prefixes that you can use in your program.
+```py_console``` has four premade prefixes that you can use in your program.
 
 #### Examples
 ##### Code
 ```python
-import Py_Console
+import py_console
 
 print(ConsoleMessage.Success + "Somthing good happend!")
 print(ConsoleMessage.Error + "Error 404!")
@@ -84,18 +84,18 @@ print(ConsoleMessage.Info + "Heres some info!")
 ![Example Image](https://i.imgur.com/CO7ektk.png "Example Image")
 
 ### Colors
-Py-Console has a built-in color system that is designed to be intuitive to use. Py-Console automatically clears the console on Windows consoles to properly display color codes. See the usage below.
+```py_console``` has a built-in color system that is designed to be intuitive to use. py_console automatically clears the console on Windows consoles to properly display color codes. See the usage below.
 
 #### Normal Colors
 ```python
-import Py_Console
+import py_console
 
 print(ConsoleColor.Red + "I'm red!")
 ```
 
 #### Bright Colors
 ```python
-import Py-Console
+import py_console
 
 print(ConsoleColor.BrightRed + "I'm bright red!")
 ```

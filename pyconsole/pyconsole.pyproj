@@ -5,12 +5,12 @@
     <ProjectGuid>84853567-84cd-4d7f-9cb3-7ca2a553669f</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>py_console.py</StartupFile>
+    <StartupFile>pyconsole.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>py_console</Name>
+    <Name>pyconsole</Name>
     <RootNamespace>py-console</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -28,7 +28,7 @@
     <Compile Include="__init__.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="py_console.py" />
+    <Compile Include="pyconsole.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

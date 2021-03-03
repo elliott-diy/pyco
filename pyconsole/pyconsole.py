@@ -1,11 +1,11 @@
-#  _____               _____                      _      
-# |  __ \             / ____|                    | |     
-# | |__) |   _ ______| |     ___  _ __  ___  ___ | | ___ 
-# |  ___/ | | |______| |    / _ \| '_ \/ __|/ _ \| |/ _ \
-# | |   | |_| |      | |___| (_) | | | \__ \ (_) | |  __/
-# |_|    \__, |       \_____\___/|_| |_|___/\___/|_|\___|
-#         __/ |                                          
-#        |___/
+#                                        _      
+#                                       | |     
+#  _ __  _   _  ___ ___  _ __  ___  ___ | | ___ 
+# | '_ \| | | |/ __/ _ \| '_ \/ __|/ _ \| |/ _ \
+# | |_) | |_| | (_| (_) | | | \__ \ (_) | |  __/
+# | .__/ \__, |\___\___/|_| |_|___/\___/|_|\___|
+# | |     __/ |                                 
+# |_|    |___/ 
 #
 # Made by Duplexes and LemonPi314
 # https://github.com/Duplexes/Py-Console
@@ -37,6 +37,10 @@ osName = os.name
 # If the operating system is Windows, clear the console screen to fix the color bug
 if osName == "nt":
     clear()
+
+# Variables to enable or disable logging and log clearing
+enableLogging = False
+clearLog = False
 
 # Massive list of colors to easily use on all console systems
 class ConsoleColor:
@@ -152,19 +156,21 @@ def Logger(message = "", prefix = ""):
     prefix - The prefix before the message, and after the timestamp
     """
 
-    # Get the date and time
-    dateTime = datetime.now()
-    dateTime = dateTime.strftime("%d/%m/%Y, %H:%M:%S")
-    # If the log file exists, open it and log the message
-    if os.path.exists(logDir):
-        logfile = open(logDir, "a")
-        logfile.write("[" + dateTime + "] " + "[" + prefix + "] " + message + "\n")
+    if enableLogging == True:
+         # Get the date and time
+        dateTime = datetime.now()
+        dateTime = dateTime.strftime("%d/%m/%Y, %H:%M:%S")
 
-    # If the log file doesn't exist, create a new one and log the message
-    else:
-        logfile = open(logDir, "x")
-        logfile.write("[" + dateTime + "] " + "[ERROR] " + "Log file missing or inaccessible. Creating a new one." + "\n")
-        ErrorLogger(message, prefix)
+        # If the log file exists, open it and log the message
+        if os.path.exists(logDir):
+            logfile = open(logDir, "a")
+            logfile.write("[" + dateTime + "] " + "[" + prefix + "] " + message + "\n")
+
+        # If the log file doesn't exist, create a new one and log the message
+        else:
+            logfile = open(logDir, "x")
+            logfile.write("[" + dateTime + "] " + "[ERROR] " + "Log file missing or inaccessible. Creating a new one." + "\n")
+            ErrorLogger(message, prefix)
 
 # Function to clear the log file
 def ClearLog():
@@ -173,15 +179,16 @@ def ClearLog():
     The file will still exist with one entry, it will not get deleted.
     """
 
-    if os.path.exists(logDir):
-        dateTime = datetime.now()
-        dateTime = dateTime.strftime("%d/%m/%Y, %H:%M:%S")
-        logfile = open(logDir, "w")
-        logfile.write("[" + dateTime + "] " + "[INFO] " + "Cleared log file contents" + "\n")
-        logfile.close()
+    if clearLog == True:
+        if os.path.exists(logDir):
+            dateTime = datetime.now()
+            dateTime = dateTime.strftime("%d/%m/%Y, %H:%M:%S")
+            logfile = open(logDir, "w")
+            logfile.write("[" + dateTime + "] " + "[INFO] " + "Cleared log file contents" + "\n")
+            logfile.close()
 
-    else:
-        Logger()
+        else:
+            Logger()
 
 # Clear the error log file on startup
 ClearLog()
