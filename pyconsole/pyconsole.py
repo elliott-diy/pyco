@@ -170,7 +170,7 @@ def Logger(message = "", prefix = ""):
         else:
             logfile = open(logDir, "x")
             logfile.write("[" + dateTime + "] " + "[ERROR] " + "Log file missing or inaccessible. Creating a new one." + "\n")
-            ErrorLogger(message, prefix)
+            Logger(message, prefix)
 
 # Function to clear the log file
 def ClearLog():

@@ -1,9 +1,9 @@
 
 # pyconsole
-```pyconsole``` is a Python library designed to help developers make nicer command line applications faster. It has cross-platform compatibility for Windows and Linux and supports color on both as well. There are also numerous small quality of life features that will make your programming easier, such as a built-in error logger and message handler.
+`pyconsole` is a Python library designed to help developers make nicer command line applications faster. It has cross-platform compatibility for Windows and Linux and supports color on both as well. There are also numerous small quality of life features that will make your programming easier, such as a built-in error logger and message handler.
 
 ## Installation
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install ```pyconsole```. 
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install `pyconsole`. 
 ```bash
 pip install pyconsole
 ```
@@ -84,7 +84,7 @@ print(ConsoleMessage.Info + "Heres some info!")
 ![Example Image](https://i.imgur.com/CO7ektk.png "Example Image")
 
 ### Colors
-```pyconsole``` has a built-in color system that is designed to be intuitive to use. pyconsole automatically clears the console on Windows consoles to properly display color codes. See the usage below.
+`pyconsole` has a built-in color system that is designed to be intuitive to use. pyconsole automatically clears the console on Windows consoles to properly display color codes. See the usage below.
 
 #### Normal Colors
 ```python

@@ -1,5 +1,0 @@
-[16/02/2021, 09:18:01] [INFO] Cleared log file contents
-[16/02/2021, 09:18:01] [error] oops
-[16/02/2021, 09:18:01] [error] oops x2
-[16/02/2021, 09:18:01] [[error] ] bruh
-[16/02/2021, 09:18:01] [[error] ] oi
