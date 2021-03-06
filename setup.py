@@ -5,7 +5,7 @@ with open("readme.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="pyconsole",
-    version="0.1",
+    version="0.2",
     author="Duplexes",
     author_email="timothy.pavlushik@gmail.com",
     description="Some tools for printing with colors in the console, as well as logging functions.",
