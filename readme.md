@@ -20,8 +20,8 @@ You may override preset colors.
 #### Parameters
 `message` - The message you want to print in the console. Default is `""`.  
 `prefix` - The prefix before the message. Default is `"none"`.  
-`messageColor` - The color of the message. Default is `ConsoleColor.White`.  
-`prefixColor` - The color of the prefix. Default is `ConsoleColor.White`.  
+`messageColor` - The color of the message. Default is `pyconsole.Color.White`.  
+`prefixColor` - The color of the prefix. Default is `pyconsole.Color.White`.  
 `colorBrackets` - Specify whether to color the brackets surrounding the prefix or not. Default is `False`.  
 `forceLog` - Force the message to be logged in the log file. Default is `False`.  
 
@@ -35,9 +35,9 @@ PrintMessage("Error message.", "Error")
 PrintMessage("Warning message.", "Warning")
 PrintMessage("Success message.", "Success")
 PrintMessage("Info message.", "Info")
-PrintMessage("Message in pink.", "none", ConsoleColor.BrightMagenta)
-PrintMessage("Message in blue.", "Green prefix", ConsoleColor.BrightBlue, ConsoleColor.Green)
-PrintMessage("Message in cyan. The brackets around the prefix are also colored", "Custom Prefix", ConsoleColor.BrightCyan, ConsoleColor.Red, True)
+PrintMessage("Message in pink.", "none", pyconsole.Color.BrightMagenta)
+PrintMessage("Message in blue.", "Green prefix", pyconsole.Color.BrightBlue, pyconsole.Color.Green)
+PrintMessage("Message in cyan. The brackets around the prefix are also colored", "Custom Prefix", pyconsole.Color.BrightCyan, pyconsole.Color.Red, True)
 PrintMessage("This message has been logged in the log file","Info", None, None, False, True)
 ```
 
@@ -50,8 +50,8 @@ image here
 
 #### Parameters
 `prefix` - The prompt or question before the user's unput. Default is `""`.  
-`prefixColor` - The color of the prefix. Default is `ConsoleColor.White`.  
-`inputColor` - The color of the user's input. Default is `ConsoleColor.White`.  
+`prefixColor` - The color of the prefix. Default is `pyconsole.Color.White`.  
+`inputColor` - The color of the user's input. Default is `pyconsole.Color.White`.  
 
 #### Examples
 ##### Code
@@ -59,8 +59,8 @@ image here
 import pyconsole
 
 UserInput("My prompt.")
-UserInput("Prompt in green", ConsoleColor.Green)
-UserInput("Prompt in green, user input  in blue", ConsoleColor.Green, ConsoleColor.Blue)
+UserInput("Prompt in green", pyconsole.Color.Green)
+UserInput("Prompt in green, user input  in blue", pyconsole.Color.Green, pyconsole.Color.Blue)
 ```
 
 ##### Output
@@ -90,14 +90,14 @@ print(ConsoleMessage.Info + "Heres some info!")
 ```python
 import pyconsole
 
-print(ConsoleColor.Red + "I'm red!")
+print(pyconsole.Color.Red + "I'm red!")
 ```
 
 #### Bright Colors
 ```python
 import pyconsole
 
-print(ConsoleColor.BrightRed + "I'm bright red!")
+print(pyconsole.Color.BrightRed + "I'm bright red!")
 ```
 
 ## Contributing
