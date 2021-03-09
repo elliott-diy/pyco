@@ -1,17 +1,6 @@
-[05/03/2021, 23:00:34] [INFO] Cleared log file contents
-[05/03/2021, 23:00:34] [ERROR] This is an error message.
-[05/03/2021, 23:00:34] [WARNING] This is a warning message.
-[05/03/2021, 23:00:34] [SUCCESS] This is a success message.
-[05/03/2021, 23:00:34] [INFO] This is an info message.
-[05/03/2021, 23:00:34] This is a generic message.
-[05/03/2021, 23:00:34] This is a message with a custom color.
-[05/03/2021, 23:00:34] [ERROR] You can even override preset message colors.
-[05/03/2021, 23:00:34] [INFO] For even more customizability, you can choose whether to color only the prefix,
-[05/03/2021, 23:00:34] [INFO] Or the brackets as well.
-[05/03/2021, 23:00:34] [INFO] This message has been logged in the log file.
-[05/03/2021, 23:00:34] 
-
-[05/03/2021, 23:00:34] This is a prompt for input. sdsad
-[05/03/2021, 23:00:35] The prompts can be colored. dsadsad
-[05/03/2021, 23:00:36] As well as the user's input. sadsddad
-[05/03/2021, 23:00:36] Press ENTER to exit the program. dsads
+[09/03/2021, 00:16:56] [INFO] Cleared log file contents
+[09/03/2021, 00:16:56] [ERROR] This is an error message.
+[09/03/2021, 00:16:56] [WARNING] This is a warning message.
+[09/03/2021, 00:16:56] [SUCCESS] This is a success message.
+[09/03/2021, 00:16:56] [ERROR] You can even override preset message colors.
+[09/03/2021, 00:16:56] [INFO] This message has been logged in the log file.

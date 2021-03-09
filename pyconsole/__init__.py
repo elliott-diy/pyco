@@ -1,1 +1,1 @@
-import pyconsole
+from pyconsole.pyconsole import *
