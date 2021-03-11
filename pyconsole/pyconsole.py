@@ -10,48 +10,45 @@
 # Made by Duplexes and LemonPi314
 # https://github.com/Duplexes/pyconsole
 
-# Imports needed to use this code
-import os 
+import os, time
 from datetime import datetime
 from pathlib import Path
 
 # This must be run when the program starts to clear a color bug on Windows consoles
 ClearScreen = lambda: os.system('cls' if os.name == 'nt' else 'clear')
 
-# Old version of the same function but in different form
-# Repaced by the lambda above
-#def ClearScreen():
-#    if os.name == "posix":
-#        os.system("clear")
-#    else:
-#      os.system("cls")
+def ClearScreenFunction():
+    if os.name == "nt":
+        os.system("cls")
 
-# Get the directory containing the project files
-workingDir = os.getcwd()
-projectDir = Path(workingDir)
-logDir = os.path.join(projectDir, "logs", "log.txt")
+    else:
+        os.system("clear")
 
-# Get the type of the operating system being used
+# Get the name of the current operating system
 osName = os.name
 
 # If the operating system is Windows, clear the console screen to fix the color bug
 if osName == "nt":
     ClearScreen()
 
-# Variables to enable or disable logging and log clearing
-enableMessageLogging = True
-enableInputLogging = True
-clearLogOnStart = True
+# Get the directory containing the project files
+workingDir = os.getcwd()
+projectDir = Path(workingDir)
+
+# Set the default log file directory
+_logDir = os.path.join(projectDir, "logs", "log.txt")
+
+# Variables to enable or disable message logging and input logging
+_enableMessageLogging = True
+_enableInputLogging = True
 
 # Set default log level
-logLevelInt = 3
+_logLevelInt = 3
 
-# Massive list of colors to easily use on all console systems
 class Color:
     """
     A list of colors as console escape codes.
     """
-
     Reset = "\u001b[0m"
     Black = "\u001b[30m"
     Red = "\u001b[31m"
@@ -70,68 +67,46 @@ class Color:
     BrightCyan = "\u001b[36;1m"
     BrightWhite = "\u001b[37;1m"
 
-#class LogLevel:
-#    none = 0
-#    error = 1
-#    warning = 2
-#    success = 3
-#    info = 4
-#    All = 5
-
-# List of premade UserInput() prefixes
-#class ConsoleMessage:
-#    Warning = "\u001b[0m[\u001b[33;1mWarning\u001b[0m] "
-#    Error = "\u001b[0m[\u001b[31;1mError\u001b[0m] "
-#    Success = "\u001b[0m[\u001b[32;1mSuccess\u001b[0m] "
-#    Info = "\u001b[0m[\u001b[34;1mInfo\u001b[0m] "
-
 # Premade tools and functions 
-def PrintMessage(message, prefix = "none", messageColor = Color.White, prefixColor = None, colorBrackets = False, forceLog = False):
+def PrintMessage(message = "", prefix = "none", messageColor: Color = Color.White, prefixColor: Color = None, colorBrackets: bool = False, forceLog: bool = None):
     """
-    A replacement for "print()" with color and various prefix and logging options. 
+    A replacement for `print()` with color and various prefix and logging options. 
 
     Parameters: 
-    message - The message you want to print. 
-    prefix - The label before the message. 
-    messageColor - The color for the message. 
-    prefixColor - The color for the prefix. 
-    colorBrackets - Choose whether to color the square brackets surrounding the prefix or not. 
-    forceLog - Force the message to be logged regardless of the label. 
+    `message` - The message you want to print. 
+    `prefix` - The label before the message. 
+    `messageColor` - The color for the message. 
+    `prefixColor` - The color for the prefix. 
+    `colorBrackets` - Choose whether to color the square brackets surrounding the prefix or not. 
+    `forceLog` - Force the message to be logged regardless of the label. 
     It is also possible to enter a custom prefix. 
     """
-
     log = False
     color = Color.White
-    
     if prefix.lower().find("error") != -1:
         color = Color.BrightRed
-
-        if logLevelInt >= 1:
+        if _logLevelInt >= 1:
             log = True
 
     elif prefix.lower().find("warning") != -1:
         color = Color.BrightYellow
-
-        if logLevelInt >= 2:
+        if _logLevelInt >= 2:
             log = True
 
     elif prefix.lower().find("success") != -1:
         color = Color.BrightGreen
-
-        if logLevelInt >= 3:
+        if _logLevelInt >= 3:
             log = True
 
     elif prefix.lower().find("info") != -1:
         color = Color.White
-
-        if logLevelInt >= 4:
+        if _logLevelInt >= 4:
             log = True
 
     elif prefix.lower() == "none":
         prefix = ""
         color = Color.White
-
-        if logLevelInt == 5:
+        if _logLevelInt == 5:
             log = True
 
     if prefixColor == None:
@@ -140,11 +115,11 @@ def PrintMessage(message, prefix = "none", messageColor = Color.White, prefixCol
     if messageColor == None:
         messageColor = Color.White
 
-    if forceLog == True:
-        log = True
+    if forceLog != None:
+        log = forceLog
 
     if log == True:
-        Logger(message, prefix)
+        Logger.Log(message, prefix)
 
     if prefix != "":
         if colorBrackets == True:
@@ -157,127 +132,171 @@ def PrintMessage(message, prefix = "none", messageColor = Color.White, prefixCol
     elif prefix == "":
         print(Color.Reset + messageColor + message + Color.Reset)
 
-def UserInput(prefix = "", prefixColor = Color.White, inputColor = Color.White):
+def UserInput(prefix = "", prefixColor: Color = Color.White, inputColor: Color = Color.White):
     """
-    A replacement for "input()" with colors. 
+    A replacement for `input()` with colors. 
 
     Parameters: 
-    prefix - The prompt before the program asks for input from the user. 
-    prefixColor - The color for the prompt. 
-    inputColor - The color for the user's input. 
+    `prefix` - The prompt before the program asks for input from the user. 
+    `prefixColor` - The color for the prompt. 
+    `inputColor` - The color for the user's input. 
     """
-
     userInput = input(prefixColor + prefix + Color.Reset+ inputColor)
-
-    if enableMessageLogging == True:
-        Logger(userInput, prefix, False)
+    if _enableInputLogging == True:
+        Logger.Log(userInput, prefix, False)
 
     return userInput
 
-def ProgressBar(iteration, total, prefix = "", suffix = "", length = 100, fill = "█", decimals = 1, printEnd = "\r"):
+class ProgressBar:
     """
-    Call in a loop to create terminal progress bar. 
+    Create an instance of this class to create a progress bar in the console using `p = ProgressBar()`. 
+    To update the progress bar call `p.update(counter)` in a loop where `counter` is increased every iteration. 
 
     Parameters: 
-    iteration - Required. Current iteration (Int). 
-    total - Required. Total iterations (Int). 
-    prefix - Optional. Prefix string (Str). 
-    suffix - Optional. Suffix string (Str). 
-    length - Optional. Character length of bar (Int). 
-    fill - Optional. Bar fill character (Str). 
-    decimals - Optional. Positive number of decimals in percent complete (Int). 
-    printEnd - Optional. End character (e.g. "\r", "\r\n") (Str). 
+    `iteration` - Current iteration. 
+    `total` - Total iterations. 
+    `prefix` - Prefix string. 
+    `suffix` - Suffix string. 
+    `length` - Character length of bar. 
+    `fill` - Bar fill character. 
+    `decimals` - Positive number of decimals in percent complete. 
+    `printEnd` - End character (e.g. `"\r"`, `"\r\n"`). 
     """
+    def __init__(self, iteration: int = 0, total: int = 100, updateIntervalms: float = 100, prefix = "", suffix = "", length: int = 100, fill = "█", decimals: int = 1, printEnd = "\r"):
+        self.iteration = iteration
+        self.total = total
+        self.updateIntervalms = updateIntervalms
+        self.prefix = prefix
+        self.suffix = suffix
+        self.length = length
+        self.fill = fill
+        self.decimals = decimals
+        self.printEnd = printEnd
+        self.lastUpdateTime: time = 0
+    
+    def update(self, iteration = None, force = False):
+        now = time.time()
+        if iteration != None:
+            self.iteration = iteration
 
-    percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
-    filledLength = int(length * iteration // total)
-    bar = fill * filledLength + '-' * (length - filledLength)
-    print(f'\r{prefix} |{bar}| {percent}% {suffix}', end = printEnd)
+        if self.updateIntervalms == 0:
+            self.updateIntervalms = 1
 
-    # Print new line on complete
-    if iteration == total: 
-        print()
+        if force == False and self.iteration < self.total and (now - self.lastUpdateTime) < (self.updateIntervalms / 1000):
+            return
+            
+        self.lastUpdateTime = now
+        ProgressBar.PrintProgressBar(self.iteration, self.total, self.prefix, self.suffix, self.length, self.fill, self.decimals, self.printEnd)
+        if self.iteration == self.total:
+            print()
 
-def Logger(message = "", prefix = "", prefixBrackets = True):
-    """
-    Logging function which writes log entries to a text file. 
+    @staticmethod
+    def PrintProgressBar(iteration: int, total: int, prefix = "", suffix = "", length: int = 100, fill = "█", decimals: int = 1, printEnd = "\r"):
+        percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
+        filledLength = int(length * iteration // total)
+        bar = fill * filledLength + '-' * (length - filledLength)
+        print(f'\r{prefix} |{bar}| {percent}% {suffix}', end = printEnd)
 
-    Parameters: 
-    message - The message to be logged. 
-    prefix - The prefix before the message, and after the timestamp. 
-    """
+class Logger:
+    @staticmethod
+    def Log(message = "", prefix = "", prefixBrackets: bool = True):
+        """
+        Logging function which writes log entries to a text file. 
 
-    if enableMessageLogging == True:
-        # Get the date and time
-        dateTime = datetime.now()
-        dateTime = dateTime.strftime("%d/%m/%Y, %H:%M:%S")
+        Parameters: 
+        `message` - The message to be logged. 
+        `prefix` - The prefix before the message, and after the timestamp. 
+        """
+        if _enableMessageLogging == True:
+            # Get the date and time
+            dateTime = datetime.now()
+            dateTime = dateTime.strftime("%d/%m/%Y, %H:%M:%S")
+            if os.path.exists(Path(_logDir).parent):
+                # If the log file exists, open it and log the message
+                if os.path.exists(_logDir):
+                    logFile = open(_logDir, "a")
+                    if prefix == "" or prefixBrackets == False:
+                        logFile.write("[" + dateTime + "] " + prefix + message + "\n")
+                    
+                    else:
+                        logFile.write("[" + dateTime + "] " + "[" + prefix + "] " + message + "\n")
 
-        if os.path.exists(Path(logDir).parent):
-            # If the log file exists, open it and log the message
-            if os.path.exists(logDir):
-                logfile = open(logDir, "a")
+            # If the log file doesn't exist, create a new one and log the message
+            else:
+                os.makedirs(Path(_logDir).parent)
+                logFile = open(_logDir, "x")
+                logFile.write("[" + dateTime + "] " + "[ERROR] " + "Log file missing or inaccessible. Creating a new one." + "\n")
+                Logger.Log(message, prefix)
+            
+            logFile.close()
 
-                if prefix == "" or prefixBrackets == False:
-                    logfile.write("[" + dateTime + "] " + prefix + message + "\n")
-                
-                else:
-                    logfile.write("[" + dateTime + "] " + "[" + prefix + "] " + message + "\n")
-
-        # If the log file doesn't exist, create a new one and log the message
-        else:
-            os.makedirs(Path(logDir).parent)
-            logfile = open(logDir, "x")
-            logfile.write("[" + dateTime + "] " + "[ERROR] " + "Log file missing or inaccessible. Creating a new one." + "\n")
-            Logger(message, prefix)
+    @staticmethod
+    def SetLogLevel(level):
+        """
+        Set the log level. 
         
-        logfile.close()
+        Parameters: 
+        `level` - String. 
+        
+        `"none"` - Don't log any messages. 
+        `"error"` - Log errors. 
+        `"warning"` - Log warnings and errors. 
+        `"success"` - Log successes, warnings, and errors. 
+        `"info"` - Log info, successes, warnings, and errors. 
+        `"everything"` - Log everything. 
+        """
+        global _logLevelInt
+        if type(level) == str:
+            levels = {
+                "none": 0,
+                "error": 1,
+                "warning": 2,
+                "success": 3,
+                "info": 4,
+                "everything": 5
+            }
+            _logLevelInt = levels.get(level, 1)
 
-def SetLogLevel(level):
-    """
-    Set the log level. 
-    
-    Parameters: 
-    level - String. 
-    
-    "none" - Don't log any messages. 
-    "error" - Log errors. 
-    "warning" - Log warnings and errors. 
-    "success" - Log successes, warnings, and errors. 
-    "info" - Log info, successes, warnings, and errors. 
-    "all" - Log everything. 
-    """
+        elif type(level) == int or type(level) == Logger.Levels:
+            _logLevelInt = level
 
-    if type(level) == str:
-        levels = {
-            "none": 0,
-            "error": 1,
-            "warning": 2,
-            "success": 3,
-            "info": 4,
-            "all": 5
-        }
+    @staticmethod
+    def ClearLog():
+        """
+        Clear the log file to save disk space. 
+        The file will still exist with one entry, it will not get deleted. 
+        """
+        if os.path.exists(_logDir):
+            dateTime = datetime.now()
+            dateTime = dateTime.strftime("%d/%m/%Y, %H:%M:%S")
+            logFile = open(_logDir, "w")
+            logFile.write("[" + dateTime + "] " + "[INFO] " + "Cleared log file contents" + "\n")
+            logFile.close()
 
-        logLevelInt = levels.get(level, 1)
+        else:
+            Logger.Log()
 
-    elif type(level) == int:
-        logLevelInt = level
+    @staticmethod
+    def Set(messageLogging: bool = True, inputLogging: bool = True):
+        """
+        Enable or disable messsage logging and input logging. 
 
-def ClearLog():
-    """
-    Clear the log file to save disk space. 
-    The file will still exist with one entry, it will not get deleted. 
-    """
+        Parameters: 
+        `messageLogging` - Enable or disable message logging.
+        `inputLogging` - Enable or disable user input logging.
+        """
+        global _enableMessageLogging
+        global _enableInputLogging
+        _enableMessageLogging = messageLogging
+        _enableInputLogging = inputLogging
 
-    if os.path.exists(logDir):
-        dateTime = datetime.now()
-        dateTime = dateTime.strftime("%d/%m/%Y, %H:%M:%S")
-        logfile = open(logDir, "w")
-        logfile.write("[" + dateTime + "] " + "[INFO] " + "Cleared log file contents" + "\n")
-        logfile.close()
-
-    else:
-        Logger()
-    
-# Clear the error log file on startup
-if clearLogOnStart == True:
-    ClearLog()
+    class Levels:
+        """
+        A list of log levels to use in the `Logger.SetLogLevel()` function.
+        """
+        none = 0
+        error = 1
+        warning = 2
+        success = 3
+        info = 4
+        everything = 5

@@ -1,6 +1,15 @@
-[09/03/2021, 00:16:56] [INFO] Cleared log file contents
-[09/03/2021, 00:16:56] [ERROR] This is an error message.
-[09/03/2021, 00:16:56] [WARNING] This is a warning message.
-[09/03/2021, 00:16:56] [SUCCESS] This is a success message.
-[09/03/2021, 00:16:56] [ERROR] You can even override preset message colors.
-[09/03/2021, 00:16:56] [INFO] This message has been logged in the log file.
+[11/03/2021, 13:08:52] [INFO] Cleared log file contents
+[11/03/2021, 13:08:52] [ERROR] This is an error message.
+[11/03/2021, 13:08:52] [WARNING] This is a warning message.
+[11/03/2021, 13:08:52] [SUCCESS] This is a success message.
+[11/03/2021, 13:08:52] [INFO] This is an info message.
+[11/03/2021, 13:08:52] This is a generic message.
+[11/03/2021, 13:08:52] This is a message with a custom color.
+[11/03/2021, 13:08:52] [ERROR] You can even override preset message colors.
+[11/03/2021, 13:08:52] [INFO] For even more customizability, you can choose whether to color only the prefix,
+[11/03/2021, 13:08:52] [INFO] Or the brackets as well.
+[11/03/2021, 13:08:52] [INFO] This message has been logged in the log file.
+[11/03/2021, 13:08:52] 
+
+[11/03/2021, 13:09:03] 
+
