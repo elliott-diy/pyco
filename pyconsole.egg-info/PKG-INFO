@@ -1,10 +1,10 @@
 Metadata-Version: 2.1
 Name: pyconsole
-Version: 0.4
+Version: 0.6
 Summary: Some tools for printing with colors in the console, as well as logging functions.
 Home-page: https://github.com/Duplexes/pyconsole
-Author: Duplexes
-Author-email: timothy.pavlushik@gmail.com
+Author: Duplexes and LemonPi314
+Author-email: 49930425+LemonPi314@users.noreply.github.com
 License: UNKNOWN
 Description: 
         # pyconsole
