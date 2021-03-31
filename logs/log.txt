@@ -1,15 +1,19 @@
-[11/03/2021, 13:08:52] [INFO] Cleared log file contents
-[11/03/2021, 13:08:52] [ERROR] This is an error message.
-[11/03/2021, 13:08:52] [WARNING] This is a warning message.
-[11/03/2021, 13:08:52] [SUCCESS] This is a success message.
-[11/03/2021, 13:08:52] [INFO] This is an info message.
-[11/03/2021, 13:08:52] This is a generic message.
-[11/03/2021, 13:08:52] This is a message with a custom color.
-[11/03/2021, 13:08:52] [ERROR] You can even override preset message colors.
-[11/03/2021, 13:08:52] [INFO] For even more customizability, you can choose whether to color only the prefix,
-[11/03/2021, 13:08:52] [INFO] Or the brackets as well.
-[11/03/2021, 13:08:52] [INFO] This message has been logged in the log file.
-[11/03/2021, 13:08:52] 
+[30/03/2021, 23:25:19] [INFO] Cleared log file contents
+[30/03/2021, 23:25:19] [ERROR] This is an error message.
+[30/03/2021, 23:25:19] [WARNING] This is a warning message.
+[30/03/2021, 23:25:19] [SUCCESS] This is a success message.
+[30/03/2021, 23:25:19] [INFO] This is an info message.
+[30/03/2021, 23:25:19] This is a generic message.
+[30/03/2021, 23:25:19] This is a message with a custom color.
+[30/03/2021, 23:25:19] [ERROR] You can even override preset message colors.
+[30/03/2021, 23:25:19] [INFO] For even more customizability, you can choose whether to color only the prefix,
+[30/03/2021, 23:25:19] [INFO] Or the brackets as well.
+[30/03/2021, 23:25:19] [INFO] This message has been logged in the log file.
+[30/03/2021, 23:25:19] 
 
-[11/03/2021, 13:09:03] 
+[30/03/2021, 23:25:30] 
 
+[30/03/2021, 23:26:00] This is a prompt for input. a
+[30/03/2021, 23:26:01] The prompts can be colored. a
+[30/03/2021, 23:26:03] As well as the user's input. a
+[30/03/2021, 23:26:07] Press enter to exit the program. a
