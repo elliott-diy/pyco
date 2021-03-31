@@ -1,16 +1,11 @@
-"""
-                                       _      
-                                      | |     
- _ __  _   _  ___ ___  _ __  ___  ___ | | ___ 
-| '_ \| | | |/ __/ _ \| '_ \/ __|/ _ \| |/ _ \
-| |_) | |_| | (_| (_) | | | \__ \ (_) | |  __/
-| .__/ \__, |\___\___/|_| |_|___/\___/|_|\___|
-| |     __/ |                                 
-|_|    |___/                                  
-
-Made by Duplexes and LemonPi314
-https://github.com/Duplexes/pyconsole
-"""
+#                                       _      
+#                                      | |     
+# _ __  _   _  ___ ___  _ __  ___  ___ | | ___ 
+#| '_ \| | | |/ __/ _ \| '_ \/ __|/ _ \| |/ _ \
+#| |_) | |_| | (_| (_) | | | \__ \ (_) | |  __/
+#| .__/ \__, |\___\___/|_| |_|___/\___/|_|\___|
+#| |     __/ |                                 
+#|_|    |___/                                  
 
 import os, time
 from datetime import datetime
@@ -91,12 +86,12 @@ def PrintMessage(message: str = '', prefix: str = 'none', messageColor: Color = 
     You may override the automatic coloring.
 
     Parameters:\n
-    `message` - The message you want to print.\n
-    `prefix` - The label before the message.\n
-    `messageColor` - The color for the message.\n
-    `prefixColor` - The color for the prefix.\n
-    `colorBrackets` - Choose whether to color the square brackets surrounding the prefix or not.\n
-    `forceLog` - Force the message to be logged regardless of the label.
+        `message` - The message you want to print.\n
+        `prefix` - The label before the message.\n
+        `messageColor` - The color for the message.\n
+        `prefixColor` - The color for the prefix.\n
+        `colorBrackets` - Choose whether to color the square brackets surrounding the prefix or not.\n
+        `forceLog` - Force the message to be logged regardless of the label.
     """
     log = False
     color = Color.White
@@ -158,9 +153,9 @@ def UserInput(prefix: str = '', prefixColor: Color = Color.White, inputColor: Co
     A replacement for `input()` with colors.
 
     Parameters:\n
-    `prefix` - The prompt before user's input.\n
-    `prefixColor` - The color for the prompt.\n
-    `inputColor` - The color for the user's input.
+        `prefix` - The prompt before user's input.\n
+        `prefixColor` - The color for the prompt.\n
+        `inputColor` - The color for the user's input.
     """
     prefix = str(prefix)
     print(prefixColor + prefix + Color.Reset + inputColor, sep=sep, end=end, flush=flush)
@@ -181,14 +176,14 @@ class ProgressBar:
         To update the progress bar call `p.Update(counter)` in a loop where `counter` is increased every iteration.
 
         Parameters:\n
-        `iteration` - Current iteration.\n
-        `total` - Total iterations.\n
-        `prefix` - Prefix string.\n
-        `suffix` - Suffix string.\n
-        `length` - Character length of bar.\n
-        `fill` - Bar fill character.\n
-        `decimals` - Positive number of decimals in percent complete.\n
-        `end` - End character (e.g. `'\\r'`, `'\\r\\n'`).
+            `iteration` - Current iteration.\n
+            `total` - Total iterations.\n
+            `prefix` - Prefix string.\n
+            `suffix` - Suffix string.\n
+            `length` - Character length of bar.\n
+            `fill` - Bar fill character.\n
+            `decimals` - Positive number of decimals in percent complete.\n
+            `end` - End character (e.g. `'\\r'`, `'\\r\\n'`).
         """
         self.iteration = iteration
         self.total = total
@@ -233,8 +228,8 @@ class Logger:
         Log entries with prefixes into a log file.
 
         Parameters:\n
-        `message` - The message to be logged.\n
-        `prefix` - The prefix before the message, and after the timestamp.
+            `message` - The message to be logged.\n
+            `prefix` - The prefix before the message, and after the timestamp.
         """
         if _enableMessageLogging == True:
             timestamp = ''
@@ -267,21 +262,21 @@ class Logger:
         Set the log level.
 
         Parameters:\n
-        `level` - `Logger.Levels` constant, `str`, or `int`.\n
+            `level` - `Logger.Levels` constant, `str`, or `int`.\n
         `str` Options:\n
-        `'NONE'` - Don't log any messages.\n
-        `'ERROR'` - Log errors.\n
-        `'WARNING'` - Log warnings and errors.\n
-        `'SUCCESS'` - Log successes, warnings, and errors.\n
-        `'INFO'` - Log info, successes, warnings, and errors.\n
-        `'ALL'` - Log everything.\n
+            `'NONE'` - Don't log any messages.\n
+            `'ERROR'` - Log errors.\n
+            `'WARNING'` - Log warnings and errors.\n
+            `'SUCCESS'` - Log successes, warnings, and errors.\n
+            `'INFO'` - Log info, successes, warnings, and errors.\n
+            `'ALL'` - Log everything.\n
         `int` Options:\n
-        `0` - Don't log any messages.\n
-        `1` - Log errors.\n
-        `2` - Log warnings and errors.\n
-        `3` - Log successes, warnings, and errors.\n
-        `4` - Log info, successes, warnings, and errors.\n
-        `5` - Log everything.\n
+            `0` - Don't log any messages.\n
+            `1` - Log errors.\n
+            `2` - Log warnings and errors.\n
+            `3` - Log successes, warnings, and errors.\n
+            `4` - Log info, successes, warnings, and errors.\n
+            `5` - Log everything.\n
         """
         global _logLevelInt
         if type(level) == str:
@@ -326,8 +321,8 @@ class Logger:
         Enable or disable messsage logging and input logging.
 
         Parameters:\n
-        `messageLogging` - Enable or disable message logging.\n
-        `inputLogging` - Enable or disable user input logging.
+            `messageLogging` - Enable or disable message logging.\n
+            `inputLogging` - Enable or disable user input logging.
         """
         global _enableMessageLogging
         global _enableInputLogging
