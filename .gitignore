@@ -1,0 +1,5 @@
+__pycache__/
+.vscode/
+[Bb]uild/
+[Pp]yconsole.egg-info/
+[Ll]ogs/
