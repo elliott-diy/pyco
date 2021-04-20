@@ -1,5 +1,7 @@
 __pycache__/
 .vscode/
+*env/
 [Bb]uild/
 [Pp]yconsole.egg-info/
 [Ll]ogs/
+commands.txt

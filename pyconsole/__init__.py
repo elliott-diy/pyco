@@ -1,6 +1,10 @@
 """
 Console printing, input, and logging functions with colors.\n
-Made by Duplexes and LemonPi314\n
+Version: 0.7.\n
+Made by Duplexes and LemonPi314.\n
 https://github.com/Duplexes/pyconsole
 """
-from pyconsole.pyconsole import *
+
+from .pyco import *
+
+__version__ = '0.7'
