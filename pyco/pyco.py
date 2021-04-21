@@ -1,11 +1,9 @@
-#                                        _      
-#                                       | |     
-#  _ __  _   _  ___ ___  _ __  ___  ___ | | ___ 
-# | '_ \| | | |/ __/ _ \| '_ \/ __|/ _ \| |/ _ \
-# | |_) | |_| | (_| (_) | | | \__ \ (_) | |  __/
-# | .__/ \__, |\___\___/|_| |_|___/\___/|_|\___|
-# | |     __/ |                                 
-# |_|    |___/                                  
+#  _ __  _   _  ___ ___  
+# | '_ \| | | |/ __/ _ \ 
+# | |_) | |_| | (_| (_) |
+# | .__/ \__, |\___\___/ 
+# | |     __/ |          
+# |_|    |___/           
 
 import os, time, atexit
 from .ansi import *
@@ -37,12 +35,11 @@ clear_screen_func = ClearScreenFunction
 clear_func = ClearScreenFunction
 cls_func = ClearScreenFunction
 
-# Hack to get Windows consoles to show colors
 if osName == 'nt':
-    import subprocess
-    subprocess.call('', shell=True)
+    from .utils import WindowsConsole
+    WindowsConsole().enable_vt_mode()
 
-def PrintMessage(message: str = '', prefix: str = 'none', messageColor: Color = Color.AUTO, prefixColor: Color = None, colorBrackets: bool = False, forceLog: bool = None, sep: str = ' ', end: str = '\n', flush: bool = False):
+def PrintMessage(message: str = '', prefix: str = None, messageColor: Color = Color.AUTO, prefixColor: Color = Color.AUTO, colorBrackets: bool = False, forceLog: bool = None, sep: str = ' ', end: str = '\n', flush: bool = False):
     """
     A replacement for `print()` with color and various prefix and logging options. 
     Certain prefixes like `Error` and `Warning` are automatically colored appropriately. 
@@ -58,36 +55,38 @@ def PrintMessage(message: str = '', prefix: str = 'none', messageColor: Color = 
     """
     log = False
     autoPrefixColor = Color.DEFAULT_PREFIX_COLOR
-    if prefix.lower().find('error') != -1:
+    
+    if prefix is None:
+        prefix = ''
+        autoPrefixColor = Color.DEFAULT_PREFIX_COLOR
+    
+    elif prefix.lower().find('error') != -1:
         autoPrefixColor = Color.ERROR
-        if Logger._logLevelInt >= 1:
+        if Logger.logLevel >= Logger.Levels.ERROR:
             log = True
 
     elif prefix.lower().find('warning') != -1:
         autoPrefixColor = Color.WARNING
-        if Logger._logLevelInt >= 2:
+        if Logger.logLevel >= Logger.Levels.WARNING:
             log = True
 
     elif prefix.lower().find('success') != -1:
         autoPrefixColor = Color.SUCCESS
-        if Logger._logLevelInt >= 3:
+        if Logger.logLevel >= Logger.Levels.SUCCESS:
             log = True
 
     elif prefix.lower().find('info') != -1:
         autoPrefixColor = Color.INFO
-        if Logger._logLevelInt >= 4:
+        if Logger.logLevel >= Logger.Levels.INFO:
             log = True
 
-    elif prefix.lower() == 'none' or prefix is None:
-        prefix = ''
-        autoPrefixColor = Color.DEFAULT_PREFIX_COLOR
-        if Logger._logLevelInt == 5:
+    if Logger.logLevel == Logger.Levels.ALL:
             log = True
 
     if prefixColor is None or prefixColor == Color.AUTO:
         prefixColor = autoPrefixColor
         
-    if messageColor is None or prefixColor == Color.AUTO:
+    if messageColor is None or messageColor == Color.AUTO:
         messageColor = Color.DEFAULT_MESSAGE_COLOR
 
     if forceLog is not None:
@@ -98,22 +97,22 @@ def PrintMessage(message: str = '', prefix: str = 'none', messageColor: Color = 
 
     if prefix != '':
         if colorBrackets is True:
-            print(f'{Color.RESET}{prefixColor}[{prefix}] {Color.RESET}{messageColor}{message}{Color.RESET}', sep=sep, end=end, flush=flush)
+            print(f'{Color.RESET}{prefixColor}[{prefix}]{Color.RESET} {messageColor}{message}{Color.RESET}', sep=sep, end=end, flush=flush)
 
         elif colorBrackets is False:
             print(f'{Color.RESET}[{prefixColor}{prefix}{Color.RESET}] {messageColor}{message}{Color.RESET}', sep=sep, end=end, flush=flush)
 
     elif prefix == '':
-        print(Color.RESET + messageColor + message + Color.RESET)
+        print(f'{Color.RESET}{messageColor}{message}{Color.RESET}')
 
 Print = PrintMessage
 print_message = PrintMessage
 PrintMsg = PrintMessage
 print_msg = PrintMessage
 
-def UserInput(prefix: str = '', prefixColor: Color = Color.Foreground.WHITE, inputColor: Color = Color.Foreground.WHITE):
+def UserInput(prefix: str = '', prefixColor: Color = Color.DEFAULT_PREFIX_COLOR, inputColor: Color = Color.DEFAULT_MESSAGE_COLOR):
     """
-    A replacement for `input()` with colors.
+    A replacement for `input()` with colors and logging.
 
     Parameters:\n
         `prefix` - The prompt before user's input.\n
@@ -132,7 +131,7 @@ userinput = UserInput
 user_input = UserInput
 
 class ProgressBar:
-    def __init__(self, iteration: int = 0, total: int = 100, updateIntervalms: float = 100, prefix: str = '', suffix: str = '', length: int = 100, fill: str = '█', decimals: int = 1, end: str = '\r'):
+    def __init__(self, iteration: int = 0, total: int = 100, prefix: str = '', suffix: str = '', length: int = 100, fill: str = '█', emptyFill: str = '-', decimals: int = 1, end: str = '\r', updateIntervalms: float = 100):
         """
         Create an instance of this class to create a progress bar in the console using `p = ProgressBar()`. 
         To update the progress bar call `p.Update(counter)` in a loop where `counter` is increased every iteration.
@@ -144,18 +143,20 @@ class ProgressBar:
             `suffix` - Suffix string.\n
             `length` - Character length of bar.\n
             `fill` - Bar fill character.\n
+            `emptyFill` - Character to fill in empty part of the bar.\n
             `decimals` - Positive number of decimals in percent complete.\n
             `end` - End character (e.g. `'\\r'`, `'\\r\\n'`).
         """
         self.iteration = iteration
         self.total = total
-        self.updateIntervalms = updateIntervalms
         self.prefix = prefix
         self.suffix = suffix
         self.length = length
         self.fill = fill
+        self.emptyFill = emptyFill
         self.decimals = decimals
         self.end = end
+        self.updateIntervalms = updateIntervalms
         self.lastUpdateTime: time = 0
     
     def Update(self, iteration = None, force = False):
@@ -170,15 +171,15 @@ class ProgressBar:
             return
             
         self.lastUpdateTime = now
-        ProgressBar._PrintProgressBar(self.iteration, self.total, self.prefix, self.suffix, self.length, self.fill, self.decimals, self.end)
+        ProgressBar._PrintProgressBar(iteration=self.iteration, total=self.total, prefix=self.prefix, suffix=self.suffix, length=self.length, fill=self.fill, emptyFill=self.emptyFill, decimals=self.decimals, end=self.end)
         if self.iteration == self.total:
             print()
 
     update = Update
 
     @staticmethod
-    def _PrintProgressBar(iteration: int, total: int, prefix: str = '', suffix: str = '', length: int = 100, fill: str = '█', decimals: int = 1, end: str = '\r'):
-        percent = ('{0:.' + str(decimals) + 'f}').format(100 * (iteration / float(total)))
+    def _PrintProgressBar(iteration: int, total: int, prefix: str = '', suffix: str = '', length: int = 100, fill: str = '█', emptyFill: str = '-', decimals: int = 1, end: str = '\r'):
+        percent = f'{round(100 * (iteration / total), int(decimals))}'
         filledLength = int(length * iteration // total)
-        bar = fill * filledLength + '-' * (length - filledLength)
+        bar = (fill * filledLength) + (emptyFill * (length - filledLength))
         print(f'\r{prefix} |{bar}| {percent}% {suffix}', end=end)

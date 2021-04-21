@@ -1,6 +1,4 @@
-"""
-Logging methods integrated with `PrintMessage()` and `UserInput()` functions.
-"""
+"""Logging functions integrated with the `PrintMessage()` and `UserInput()` functions."""
 
 import os
 from datetime import datetime
@@ -12,7 +10,7 @@ class Logger:
     logPath = os.path.join(workingDir, 'logs', 'log.txt')
     enableMessageLogging = True
     enableInputLogging = True
-    _logLevelInt = 1
+    logLevel = 1
 
     @staticmethod
     def Log(message = '', prefix = '', prefixBrackets: bool = True, includeTimestamp: bool = True):
@@ -25,7 +23,7 @@ class Logger:
         """
         timestamp = ''
         if includeTimestamp:
-            timestamp = f"[{datetime.now().strftime('%d/%m/%Y, %H:%M:%S')}]"
+            timestamp = f"[{datetime.now().strftime('%d/%m/%Y, %H:%M:%S')}] "
         
         if os.path.exists(Logger.logPath):
             message = str(message)
@@ -34,14 +32,14 @@ class Logger:
                 prefix = f'[{prefix}] '
 
             with open(Logger.logPath, 'a') as logFile:
-                logFile.write(f'{timestamp} {prefix}{message}\n')
+                logFile.write(f'{timestamp}{prefix}{message}\n')
 
-        else:
+        elif Logger.logLevel != 0:
             os.makedirs(Path(Logger.logPath).parent)
             with open(Logger.logPath, 'w') as logFile:
-                logFile.write(f"{timestamp} [ERROR] Log file missing or inaccessible. Creating a new one.\n")
+                logFile.write(f"{timestamp}[ERROR] Log file missing or inaccessible. Creating a new one.\n")
 
-            Logger.Log(message, prefix, prefixBrackets=prefixBrackets, includeTimestamp=includeTimestamp)
+            Logger.Log(message=message, prefix=prefix, prefixBrackets=prefixBrackets, includeTimestamp=includeTimestamp)
                 
     log = Log
 
@@ -69,17 +67,17 @@ class Logger:
         """
         if type(level) == str:
             levels = {
-                'none': 0,
-                'error': 1,
-                'warning': 2,
-                'success': 3,
-                'info': 4,
-                'all': 5
+                'NONE': 0,
+                'ERROR': 1,
+                'WARNING': 2,
+                'SUCCESS': 3,
+                'INFO': 4,
+                'ALL': 5
             }
-            Logger._logLevelInt = levels.get(level.lower(), 1)
+            Logger.logLevel = levels.get(level.upper(), 1)
 
         elif type(level) == int or type(level) == Logger.Levels:
-            Logger._logLevelInt = level
+            Logger.logLevel = level
 
     set_log_level = SetLogLevel
     LogLevel = SetLogLevel
@@ -94,9 +92,9 @@ class Logger:
         The file will still exist with one entry, it will not get deleted.
         """
         if os.path.exists(Logger.logPath):
-            dateTime = datetime.now().strftime('%d/%m/%Y, %H:%M:%S')
+            timestamp = datetime.now().strftime('%d/%m/%Y, %H:%M:%S')
             with open(Logger.logPath, 'w') as logFile:
-                logFile.write(f"[{dateTime}] [INFO] Cleared log file contents\n")
+                logFile.write(f"[{timestamp}] [INFO] Cleared log file contents\n")
 
         else:
             Logger.Log()
@@ -118,9 +116,7 @@ class Logger:
         Logger.enableInputLogging = inputLogging
 
     class Levels:
-        """
-        Log level constants to use in the `Logger.SetLogLevel()` function.
-        """
+        """Log level constants to use in the `Logger.SetLogLevel()` function."""
         NONE = 0
         ERROR = 1
         WARNING = 2

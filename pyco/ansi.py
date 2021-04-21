@@ -1,6 +1,6 @@
 """
 ANSI escape codes for use in terminal output. 
-Note: Some escape codes may not be supported in all terminals. 
+Note: Some escape codes may not be supported by all terminals. 
 For more information see: 
 https://en.wikipedia.org/wiki/ANSI_escape_code
 """
@@ -160,7 +160,7 @@ class Cursor:
         _Write(CSI + '6n')
         pos = ''
         while len(pos) == 0 or pos[-1] != 'R':
-            pos += str(getch(), 'utf-8') #stdin.read(1)
+            pos += str(getch(), 'utf-8')
 
         x = int(findall(r'\[([0-9]+);', pos)[0])
         y = int(findall(r';([0-9]+)R', pos)[0])
@@ -303,7 +303,7 @@ class Color(_Codes):
             Change the palette color of the terminal window.
 
             Paramters:\n
-                `i` - Color palette index, `0` is Text, `1` is Background.\n
+                `i` - Color palette index.\n
                 `r`, `g`, `b` - Hexadecimal RGB values between `0` and `ff`.
             """
             _Write(OSC + '4;' + str(i) + ';rgb:' + str(r) + '/' + str(g) + '/' + str(b) + ESC)
@@ -322,6 +322,7 @@ class Color(_Codes):
     INFO = Foreground().WHITE
     DEFAULT_MESSAGE_COLOR = Foreground().WHITE
     DEFAULT_PREFIX_COLOR = Foreground().WHITE
+    DEFAULT_INPUT_COLOR = Foreground().WHITE
     RESET = Style().RESET
     AUTO = None
 
@@ -377,7 +378,7 @@ class Text:
         """
         _Write(ESC + '(0')
 
-class Input:
+class InputKeys:
     class CursorKeys:
         @staticmethod
         def UpArrow():

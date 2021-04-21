@@ -81,7 +81,6 @@ class Getch:
             import msvcrt
 
         def __call__(self):
-            #import msvcrt
             return msvcrt.getch()
 
 WinConsole = WindowsConsole

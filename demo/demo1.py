@@ -1,4 +1,4 @@
-from ..pyconsole import *
+from pyco import *
 import time
 
 # Clear the log file
@@ -19,17 +19,15 @@ PrintMessage("You can set the colors for the message and prefix separately.", pr
 PrintMessage("For even more customizability, you can choose whether to color only the prefix,", prefix="INFO", prefixColor=Color.Fore.BRIGHT_BLUE)
 PrintMessage("Or the brackets as well.", prefix="INFO", prefixColor=Color.Fore.BRIGHT_BLUE, colorBrackets=True)
 PrintMessage("This message has been logged in the log file.", prefix="INFO", forceLog=True)
-PrintMessage("\n")
 
 # Create an instance of the progress bar
 ProgressBar = ProgressBar(prefix="Example progress bar", length=50)
 # Update the progress bar every 100 milliseconds, 100 times
-for item in range(1, 101):
+for item in range(101):
     ProgressBar.Update(item)
     time.sleep(0.1)
 
-PrintMessage("\n")
-UserInput("This is a prompt for input. ")
+UserInput("This is an input prompt. ")
 UserInput("The prompts can be colored. ", Color.Fore.BRIGHT_YELLOW)
 UserInput("As well as the user's input. ", Color.Fore.BRIGHT_GREEN, Color.Fore.CYAN)
 UserInput("Press enter to exit the program. ")

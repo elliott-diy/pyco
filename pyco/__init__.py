@@ -1,5 +1,5 @@
 """
-Console printing, input, and logging functions with colors.\n
+Colored console printing and input, ANSI escape codes, and logging functions.\n
 Version: 0.7.\n
 Made by Duplexes and LemonPi314.\n
 https://github.com/Duplexes/pyconsole
