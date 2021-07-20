@@ -1,6 +1,5 @@
 import setuptools
-import os
-print(os.system('dir'))
+
 with open('readme.md', 'r', encoding='utf-8') as file:
     long_description = file.read()
 
