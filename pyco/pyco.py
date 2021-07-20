@@ -10,7 +10,6 @@
 from threading import Thread as _Thread
 from . import color, logging
 from . import prefix as _prefix
-from .utils import remove_ansi as _remove_ansi
 
 
 def print_message(message: str = '', prefix: str = '', log: bool = None, end: str = '\n', flush: bool = False):
