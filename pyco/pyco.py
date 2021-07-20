@@ -1,185 +1,102 @@
-#  _ __  _   _  ___ ___  
-# | '_ \| | | |/ __/ _ \ 
+#  _ __  _   _  ___ ___
+# | '_ \| | | |/ __/ _ \
 # | |_) | |_| | (_| (_) |
-# | .__/ \__, |\___\___/ 
-# | |     __/ |          
-# |_|    |___/           
+# | .__/ \__, |\___\___/
+# | |     __/ |
+# |_|    |___/
 
-import os, time, atexit
-from .ansi import *
-from .logger import *
+"""Terminal input/output."""
 
-atexit.register(Terminal.ResetAll)
+from threading import Thread as _Thread
+from . import color, logging
+from . import prefix as _prefix
+from .utils import remove_ansi as _remove_ansi
 
-osName = os.name
 
-ClearScreenCommand = lambda: os.system('cls' if osName == 'nt' else 'clear')
-
-clear_screen_command = ClearScreenCommand
-clearscreen = ClearScreenCommand
-clear_screen = ClearScreenCommand
-clear = ClearScreenCommand
-cls = ClearScreenCommand
-
-def ClearScreenFunction():
-    if osName == 'nt':
-        os.system('cls')
-
-    else:
-        os.system('clear')
-
-ClearScreenFunc = ClearScreenFunction
-clear_screen_function = ClearScreenFunction
-clearscreen_func = ClearScreenFunction
-clear_screen_func = ClearScreenFunction
-clear_func = ClearScreenFunction
-cls_func = ClearScreenFunction
-
-if osName == 'nt':
-    from .utils import WindowsConsole
-    WindowsConsole().enable_vt_mode()
-
-def PrintMessage(message: str = '', prefix: str = None, messageColor: Color = Color.AUTO, prefixColor: Color = Color.AUTO, colorBrackets: bool = False, forceLog: bool = None, sep: str = ' ', end: str = '\n', flush: bool = False):
+def print_message(message: str = '', prefix: str = '', log: bool = None, end: str = '\n', flush: bool = False):
     """
-    A replacement for `print()` with color and various prefix and logging options. 
-    Certain prefixes like `Error` and `Warning` are automatically colored appropriately. 
-    You may override the automatic coloring.
+    A replacement for `print()` with color and various prefix and logging options.
 
     Parameters:\n
         `message` - The message you want to print.\n
-        `prefix` - The label before the message.\n
-        `messageColor` - The color for the message.\n
-        `prefixColor` - The color for the prefix.\n
-        `colorBrackets` - Choose whether to color the square brackets surrounding the prefix or not.\n
-        `forceLog` - Force the message to be logged regardless of the label.
+        `prefix` - The prefix before the message.\n
+        `log` - Force the message to be logged regardless of the prefix.\n
+        `end` - String to print at the end, passed directly to `print()`.\n
+        `flush` - Flush the output buffer, passed directly to `print()`.
     """
-    log = False
-    autoPrefixColor = Color.DEFAULT_PREFIX_COLOR
-    
-    if prefix is None:
-        prefix = ''
-        autoPrefixColor = Color.DEFAULT_PREFIX_COLOR
-    
-    elif prefix.lower().find('error') != -1:
-        autoPrefixColor = Color.ERROR
-        if Logger.logLevel >= Logger.Levels.ERROR:
-            log = True
+    message = str(message) if message is not None else ''
+    prefix = str(prefix) if prefix is not None else ''
+    if prefix != '' and prefix[-1] != ' ':
+        prefix = prefix + ' '
+    auto_log = False
+    if prefix == _prefix.ERROR:
+        if logging.log_level >= logging.Levels.ERROR:
+            auto_log = True
+    elif prefix == _prefix.WARNING:
+        if logging.log_level >= logging.Levels.WARNING:
+            auto_log = True
+    elif prefix == _prefix.SUCCESS:
+        if logging.log_level >= logging.Levels.SUCCESS:
+            auto_log = True
+    elif prefix == _prefix.INFO:
+        if logging.log_level >= logging.Levels.INFO:
+            auto_log = True
+    if logging.log_level == logging.Levels.ALL:
+        auto_log = True
+    if log is not None:
+        auto_log = log
+    if (auto_log and logging.enable_message_logging) or log:
+        logging.log(message, prefix)
+    print(f'{color.RESET}{color.DEFAULT_PREFIX_COLOR}{prefix}{color.RESET}{color.DEFAULT_MESSAGE_COLOR}{message}{color.RESET}', end=end, flush=flush)
 
-    elif prefix.lower().find('warning') != -1:
-        autoPrefixColor = Color.WARNING
-        if Logger.logLevel >= Logger.Levels.WARNING:
-            log = True
 
-    elif prefix.lower().find('success') != -1:
-        autoPrefixColor = Color.SUCCESS
-        if Logger.logLevel >= Logger.Levels.SUCCESS:
-            log = True
-
-    elif prefix.lower().find('info') != -1:
-        autoPrefixColor = Color.INFO
-        if Logger.logLevel >= Logger.Levels.INFO:
-            log = True
-
-    if Logger.logLevel == Logger.Levels.ALL:
-            log = True
-
-    if prefixColor is None or prefixColor == Color.AUTO:
-        prefixColor = autoPrefixColor
-        
-    if messageColor is None or messageColor == Color.AUTO:
-        messageColor = Color.DEFAULT_MESSAGE_COLOR
-
-    if forceLog is not None:
-        log = forceLog
-
-    if log and Logger.enableMessageLogging:
-        Logger.Log(message, prefix)
-
-    if prefix != '':
-        if colorBrackets is True:
-            print(f'{Color.RESET}{prefixColor}[{prefix}]{Color.RESET} {messageColor}{message}{Color.RESET}', sep=sep, end=end, flush=flush)
-
-        elif colorBrackets is False:
-            print(f'{Color.RESET}[{prefixColor}{prefix}{Color.RESET}] {messageColor}{message}{Color.RESET}', sep=sep, end=end, flush=flush)
-
-    elif prefix == '':
-        print(f'{Color.RESET}{messageColor}{message}{Color.RESET}')
-
-Print = PrintMessage
-print_message = PrintMessage
-PrintMsg = PrintMessage
-print_msg = PrintMessage
-
-def UserInput(prefix: str = '', prefixColor: Color = Color.DEFAULT_PREFIX_COLOR, inputColor: Color = Color.DEFAULT_MESSAGE_COLOR):
+def user_input(prefix: str = '', input_color: color = None, log: bool = None) -> str:
     """
-    A replacement for `input()` with colors and logging.
+    Prompt for user input with colors and logging.
 
     Parameters:\n
         `prefix` - The prompt before user's input.\n
-        `prefixColor` - The color for the prompt.\n
-        `inputColor` - The color for the user's input.
+        `input_color` - The color of the user's input.\n
+        `log` - Force the prefix and input to be logged.
     """
-    prefix = str(prefix)
-    userInput = input(Color.RESET + prefixColor + prefix + Color.RESET + inputColor)
-    if Logger.enableInputLogging is True:
-        Logger.Log(userInput, prefix, False)
+    prefix = str(prefix) if prefix is not None else ''
+    input_color = color.DEFAULT_INPUT_COLOR if input_color is None else input_color
+    input_string = input(f'{color.RESET}{color.DEFAULT_PREFIX_COLOR}{prefix}{color.RESET}{input_color}')
+    print(color.RESET, end='')
+    if (logging.enable_input_logging and log is not False) or log:
+        logging.log(input_string, prefix)
+    return input_string
 
-    return userInput
 
-Input = UserInput
-userinput = UserInput
-user_input = UserInput
-
-class ProgressBar:
-    def __init__(self, iteration: int = 0, total: int = 100, prefix: str = '', suffix: str = '', length: int = 100, fill: str = '█', emptyFill: str = '-', decimals: int = 1, end: str = '\r', updateIntervalms: float = 100):
+class NonBlockingInput(_Thread):
+    def __init__(self, callback = None, name: str = 'NonBlockingInputThread', daemon: bool = True, **kwargs):
         """
-        Create an instance of this class to create a progress bar in the console using `p = ProgressBar()`. 
-        To update the progress bar call `p.Update(counter)` in a loop where `counter` is increased every iteration.
+        Threaded non-blocking input.
 
         Parameters:\n
-            `iteration` - Current iteration.\n
-            `total` - Total iterations.\n
-            `prefix` - Prefix string.\n
-            `suffix` - Suffix string.\n
-            `length` - Character length of bar.\n
-            `fill` - Bar fill character.\n
-            `emptyFill` - Character to fill in empty part of the bar.\n
-            `decimals` - Positive number of decimals in percent complete.\n
-            `end` - End character (e.g. `'\\r'`, `'\\r\\n'`).
+            `callback` - The function to call when input is received.\n
+            `name` - The name of the input thread.\n
+            `daemon` - Run as a daemon thread.\n
         """
-        self.iteration = iteration
-        self.total = total
-        self.prefix = prefix
-        self.suffix = suffix
-        self.length = length
-        self.fill = fill
-        self.emptyFill = emptyFill
-        self.decimals = decimals
-        self.end = end
-        self.updateIntervalms = updateIntervalms
-        self.lastUpdateTime: time = 0
-    
-    def Update(self, iteration = None, force = False):
-        now = time.time()
-        if iteration != None:
-            self.iteration = iteration
+        kwargs.setdefault('prefix', '')
+        kwargs.setdefault('input_color', None)
+        kwargs.setdefault('log', None)
+        self.kwargs = kwargs
+        if callback is None:
+            callback = self.get
 
-        if self.updateIntervalms == 0:
-            self.updateIntervalms = 1
+        self.callback = callback
+        self.input = None
+        self.stopped = False
+        super(NonBlockingInput, self).__init__(name=name, daemon=daemon, target=self.run)
 
-        if force is False and self.iteration < self.total and (now - self.lastUpdateTime) < (self.updateIntervalms / 1000):
-            return
-            
-        self.lastUpdateTime = now
-        ProgressBar._PrintProgressBar(iteration=self.iteration, total=self.total, prefix=self.prefix, suffix=self.suffix, length=self.length, fill=self.fill, emptyFill=self.emptyFill, decimals=self.decimals, end=self.end)
-        if self.iteration == self.total:
-            print()
+    def run(self):
+        while not self.stopped:
+            self.input = user_input(**self.kwargs)
+            self.callback(self.input)
 
-    update = Update
+    def stop(self):
+        self.stopped = True
 
-    @staticmethod
-    def _PrintProgressBar(iteration: int, total: int, prefix: str = '', suffix: str = '', length: int = 100, fill: str = '█', emptyFill: str = '-', decimals: int = 1, end: str = '\r'):
-        percent = f'{round(100 * (iteration / total), int(decimals))}'
-        filledLength = int(length * iteration // total)
-        bar = (fill * filledLength) + (emptyFill * (length - filledLength))
-        print(f'\r{prefix} |{bar}| {percent}% {suffix}', end=end)
+    def get(self):
+        return self.input

@@ -1,0 +1,33 @@
+from pyco import text, cursor
+from pyco.color import Fore
+from time import sleep
+import this
+
+cursor.line_up(3)
+sleep(0.5)
+text.insert_char(5)
+sleep(0.5)
+cursor.line_up()
+sleep(0.5)
+text.delete_char(5)
+sleep(0.5)
+cursor.line_up()
+sleep(0.5)
+text.erase_char(5)
+sleep(0.5)
+cursor.line_up()
+sleep(0.5)
+text.insert_line()
+sleep(0.5)
+cursor.line_up(3)
+sleep(0.5)
+text.delete_line()
+print(Fore.BRIGHT_GREEN)
+sleep(1)
+text.char_set_line_drawing()
+print("This text is printed with the Line Drawing character set")
+sleep(1)
+print("j k l m n q t u v w x a f g y z { } | ` ~ ")
+sleep(1)
+text.char_set_ascii()
+print("This text is printed with the default ASCII character set")

@@ -1,20 +1,45 @@
 # Progress Bars
-## Syntax
-```python
-# Create ProgressBar() instance
-bar = ProgressBar(total: int, prefix: str, suffix: str, length: int, fill: str, emptyFill: str, decimals: int, end: str, updateIntervalms: int)
-# Update the progress bar in a loop
-for iteration in range(100):
-    bar.Update(iteration)
-```
+Show progress bars in the terminal with the `ProgressBar` class. Create an instance with any desired arguments, then use the `Update()` function to update the progress bar in a loop where your progress happens. If less time has passed than the number of milliseconds in `updateInterval`, the progress bar will not update.
 
-## Parameters
-- `iteration` - The iteration of progress bar (how full it is). Default is `0`.
-- `total` - The total number of iterations the progress bar has. Default is `100`.
-- `prefix` - The prefix before the progress bar. Default is `''`.
-- `suffix` - The suffix after the progress bar. Default is `''`.
-- `length` - The number of characters in the progress bar. Default is `100`.
-- `fill` - The character to fill the progress bar with. Default is `'█'`.
-- `emptyFill` - The character to fill the empty part of the progress bar with. Default is `'-'`.
-- `decimals` - The number of decimals to show in the percent. Default is `1`.
-- `end` - The character(s) to print at the end. Default is `'\r'`.
+## Create Instance
+### Parameters
+Parameter|Default Value|Type|Description
+----------------|------|-----|---------------------------------------------------------------
+`iteration`     |`0`   |`int`|Iteration of the progress bar (how full it is)
+`total`         |`50`  |`int`|Total number of iterations in the progress bar
+`prefix`        |`''`  |`str`|Prefix before the progress bar
+`suffix`        |`''`  |`str`|Suffix after the progress bar
+`length`        |`50`  |`int`|Number of characters in the progress bar
+`fill`          |`'█'` |`str`|Character to fill the progress bar with
+`emptyFill`     |`'-'` |`str`|Character to fill the empty part of the progress bar with
+`decimals`      |`1`   |`int`|Number of decimals to show in the percent
+`end`           |`'\r'`|`str`|Character(s) to print at the end
+`updateInterval`|`100` |`int`|Interval after which to update the progress bar in milliseconds
+
+## Update
+### Parameters
+Parameter|Default Value|Type|Description
+-----------|-------|------|-------------------------------------------------------------------
+`iteration`|`None` |`int` |Iteration of the progress bar (how full it is)
+`force`    |`False`|`bool`|Force the progress bar to be updated regardless of `updateInterval`
+
+All arguments specified when [creating an instance](#create-instance) can also be changed in the `Update()` function.
+
+### Alternate Names
+- `update()`
+
+## Example
+<details>
+<summary>Click to expand</summary>
+
+```python
+from pyco import *
+import time
+
+bar = ProgressBar(prefix="Example progress bar")
+for i in range(101):
+    bar.Update(i)
+    time.sleep(0.1)
+```
+![demo-progress-bar.gif](images/demo-progress-bar.gif "demo-progress-bar.py")
+</details>

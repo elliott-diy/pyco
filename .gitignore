@@ -1,9 +1,8 @@
 __pycache__/
 .vscode/
-*env/
+*env*/
 [Bb]uild/
-[Pp]yco*.egg-info/
-[Ll]ogs/
+[Dd]ist/
+*egg*
+[Ll]og*/
 commands.txt
-*token*
-.pypirc

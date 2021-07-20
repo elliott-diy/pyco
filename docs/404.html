@@ -6,33 +6,43 @@
     <link rel="stylesheet" href="styles/terminal-window.css">
 </head>
 <body>
-    <div class="terminal space shadow">
-        <div class="top">
-            <div class="btns">
-                <span class="circle red"></span>
-                <span class="circle yellow"></span>
-                <span class="circle green"></span>
+    <div class="mobilehidden">
+        <!--div class="terminal shadow" style="margin: auto; width: 85%; overflow: hidden;">
+            <div class="top">
+                <div class="btns">
+                    <span class="circle red"></span>
+                    <span class="circle yellow"></span>
+                    <span class="circle green"></span>
+                </div>
+                <div class="title">Python Interpreter</div>
             </div>
-            <div class="title">Python Interpreter</div>
+            <div class="typewriter line1">>>> from pyco import *</div>
+            <div class="typewriter line2">>>> print_message("Page Not Found!", "ERROR")</div>
+            <div class="typewriter line3">[<span style="color:red">ERROR</span>] Page Not Found!</div>
+            <div class="typewriter line4">>>> <span class="cursor">█</span></div>
+        </div-->
+        <div id="container">
+            <div id="background" style="text-align: center; font-size: 40vmin; font-family: monospace; color: rgba(255, 255, 255, 0.3); height: min-content; margin-top: -20vmin; padding: 0%;">
+                404
+            </div>
+            <div style="text-align: center; font-weight: bold; font-size: 4vmin; padding-top: 10vmin;">
+                Probably my fault. Let me check the code...<br>
+            </div>
         </div>
-        <div class="typewriter line1">>>> from pyco import *</div>
-        <div class="typewriter line2">>>> PrintMessage("Page Not Found!", "ERROR")</div>
-        <div class="typewriter line3">[<span style="color:red">ERROR</span>] Page Not Found!</div>
-        <div class="typewriter line4">>>> <span class="cursor">█</span></div>
+        <p style="text-align: center; font-size:20px; margin-top: 15vmin;">
+            Try searching for something specific in the search bar to the left.<br>
+            <form action="https://duplexes.me/pyco" style="text-align: center; font-size: 24px;">
+                <input type="submit" value="Back to the homepage">
+            </form>
+        </p>
     </div>
-    <div id="container">
-        <div id="background" style="text-align: center; font-size: 350px; font-family: monospace; color: rgba(255, 255, 255, 0.3); height: min-content; margin-top: -25%; padding: 0%;">
-        404
-        </div>
-        <div style="text-align: center; font-weight: bold; font-size: 28px; padding-top: 10%;">
-            Probably my fault. Let me check the code...<br>
-        </div>
+    <div class="desktophidden">
+        <h2>404 - Not Found</h2>
+        <p>
+            Probably my fault. Let me check the code...<br><br>
+            Try searching for something specific in the search bar to the left.<br><br>
+            <a href="https://duplexes.me/pyco" style="text-align: center; font-size: 16px;">Back to the homepage</a>
+        </p>
     </div>
-    <p style="text-align: center; font-size:20px; margin-top: 15%;">
-        Try searching for something specific in the search bar to the left.<br>
-        <form action="https://shorturl.at/DF067" style="text-align: center; font-size: 24px;">
-            <input type="submit" value="Back to the homepage">
-        </form>
-    </p>
 </body>
 </html>

@@ -2,6 +2,7 @@
   border-radius: 5px 5px 5px 5px;
   position: relative;
   background: rgb(30, 30, 30);
+  width: 100vmin;
 }
 
 .terminal .top {
@@ -51,10 +52,6 @@
   color: white;
   padding: 8px;
   overflow: auto;
-}
-
-.space {
-  margin: 25px;
 }
 
 .shadow {
@@ -136,4 +133,16 @@ body {
   right: 0;
   z-index: -1;
   overflow: hidden;
+}
+
+@media only screen and (max-width: 700px){
+  .mobilehidden{
+        display: none;
+  }
+}
+
+@media only screen and (min-width: 700px){
+  .desktophidden{
+        display: none;
+  }
 }
