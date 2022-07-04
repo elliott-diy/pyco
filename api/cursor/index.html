@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Cursor - Pyco Documentation</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Pyco Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Welcome to MkDocs</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../home/" class="nav-link">Pyco</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../quick-start/" class="nav-link">Quick Start</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../sidebar/" class="nav-link">Sidebar</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Api <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../api/" class="dropdown-item">Api</a>
+</li>
+                                    
+<li>
+    <a href="../color/" class="dropdown-item">Color</a>
+</li>
+                                    
+<li>
+    <a href="../constants/" class="dropdown-item">Constants</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">Cursor</a>
+</li>
+                                    
+<li>
+    <a href="../io/" class="dropdown-item">Terminal Printing and Input</a>
+</li>
+                                    
+<li>
+    <a href="../logging/" class="dropdown-item">Logging</a>
+</li>
+                                    
+<li>
+    <a href="../prefix/" class="dropdown-item">Prefixes</a>
+</li>
+                                    
+<li>
+    <a href="../progress/" class="dropdown-item">Progress Bars</a>
+</li>
+                                    
+<li>
+    <a href="../terminal/" class="dropdown-item">Terminal</a>
+</li>
+                                    
+<li>
+    <a href="../text/" class="dropdown-item">Text</a>
+</li>
+                                    
+<li>
+    <a href="../utils/" class="dropdown-item">Utils</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../constants/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../io/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#cursor" class="nav-link">Cursor</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#upn-int" class="nav-link">up(n: int)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#downn-int" class="nav-link">down(n: int)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#rightn-int" class="nav-link">right(n: int)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#leftn-int" class="nav-link">left(n: int)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#line_upn-int" class="nav-link">line_up(n: int)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#line_downn-int" class="nav-link">line_down(n: int)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#horizontalx-int" class="nav-link">horizontal(x: int)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#verticaly-int" class="nav-link">vertical(y: int)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#set_positionx-int-y-int" class="nav-link">set_position(x: int, y: int)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#get_position" class="nav-link">get_position()</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#save_position" class="nav-link">save_position()</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#restore_position" class="nav-link">restore_position()</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#show" class="nav-link">show()</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#hide" class="nav-link">hide()</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#enable_blink" class="nav-link">enable_blink()</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#disable_blink" class="nav-link">disable_blink()</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#example" class="nav-link">Example</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="cursor">Cursor</h1>
+<p>Functions for modifying cursor parameters and position.</p>
+<h2 id="upn-int"><code>up(n: int)</code></h2>
+<p>Move the cursor up <code>n</code> number of characters.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>n</code></td>
+<td><code>int</code></td>
+<td><code>1</code></td>
+<td>Number of characters to move up</td>
+</tr>
+</tbody>
+</table>
+<h2 id="downn-int"><code>down(n: int)</code></h2>
+<p>Move the cursor down <code>n</code> number of characters.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>n</code></td>
+<td><code>int</code></td>
+<td><code>1</code></td>
+<td>Number of characters to move down</td>
+</tr>
+</tbody>
+</table>
+<h2 id="rightn-int"><code>right(n: int)</code></h2>
+<p>Move the cursor right <code>n</code> number of characters.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>n</code></td>
+<td><code>int</code></td>
+<td><code>1</code></td>
+<td>Number of characters to move right</td>
+</tr>
+</tbody>
+</table>
+<h2 id="leftn-int"><code>left(n: int)</code></h2>
+<p>Move the cursor left <code>n</code> number of characters.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>n</code></td>
+<td><code>int</code></td>
+<td><code>1</code></td>
+<td>Number of characters to move left</td>
+</tr>
+</tbody>
+</table>
+<h2 id="line_upn-int"><code>line_up(n: int)</code></h2>
+<p>Move the cursor up <code>n</code> number of lines.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>n</code></td>
+<td><code>int</code></td>
+<td><code>1</code></td>
+<td>Number of lines to move up</td>
+</tr>
+</tbody>
+</table>
+<h2 id="line_downn-int"><code>line_down(n: int)</code></h2>
+<p>Move the cursor down <code>n</code> number of lines.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>n</code></td>
+<td><code>int</code></td>
+<td><code>1</code></td>
+<td>Number of lines to move down</td>
+</tr>
+</tbody>
+</table>
+<h2 id="horizontalx-int"><code>horizontal(x: int)</code></h2>
+<p>Move the cursor to column <code>x</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><code>int</code></td>
+<td><code>0</code></td>
+<td>Absolute X position</td>
+</tr>
+</tbody>
+</table>
+<h2 id="verticaly-int"><code>vertical(y: int)</code></h2>
+<p>Move the cursor to row <code>y</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>y</code></td>
+<td><code>int</code></td>
+<td><code>0</code></td>
+<td>Absolute Y position</td>
+</tr>
+</tbody>
+</table>
+<h2 id="set_positionx-int-y-int"><code>set_position(x: int, y: int)</code></h2>
+<p>Move the cursor to column <code>x</code> and line <code>y</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><code>int</code></td>
+<td><code>0</code></td>
+<td>Absolute X position</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><code>int</code></td>
+<td><code>0</code></td>
+<td>Absolute Y position</td>
+</tr>
+</tbody>
+</table>
+<h2 id="get_position"><code>get_position()</code></h2>
+<p>Gets the current cursor position by switching to an alternate buffer and reading the position output. Returns an integer tuple <code>(x, y)</code>.</p>
+<h2 id="save_position"><code>save_position()</code></h2>
+<p>Save the current cursor position in memory to restore later.</p>
+<h2 id="restore_position"><code>restore_position()</code></h2>
+<p>Restore the cursor position to the last saved position. Defaults to position <code>0, 0</code> if no position was saved.</p>
+<h2 id="show"><code>show()</code></h2>
+<p>Make the terminal cursor visible.</p>
+<h2 id="hide"><code>hide()</code></h2>
+<p>Make the terminal cursor invisible.</p>
+<h2 id="enable_blink"><code>enable_blink()</code></h2>
+<p>Make the terminal cursor start blinking.</p>
+<h2 id="disable_blink"><code>disable_blink()</code></h2>
+<p>Make the terminal cursor stop blinking.</p>
+<h2 id="example">Example</h2>
+<details>
+<summary>Click to expand</summary>
+
+
+<pre><code class="language-python">from pyco import *
+import this
+from time import sleep
+
+print(Fore.BRIGHT_GREEN, end='', flush=True)
+sleep(2)
+Cursor.LineUp(5)
+sleep(0.5)
+print(&quot;Up 5 lines&quot;, end='', flush=True)
+sleep(0.5)
+Cursor.Right(5)
+sleep(0.5)
+print(&quot;Right 5 characters&quot;, end='', flush=True)
+sleep(0.5)
+Cursor.Up(1)
+sleep(0.5)
+print(&quot;Up 1 character&quot;, end='', flush=True)
+sleep(0.5)
+Cursor.Down(2)
+sleep(0.5)
+print(&quot;Down 2 characters&quot;, end='', flush=True)
+sleep(0.5)
+Cursor.Left(50)
+sleep(0.5)
+print(&quot;Left 50 characters&quot;, end='', flush=True)
+sleep(0.5)
+Cursor.LineUp(9)
+sleep(0.5)
+print(&quot;Up 9 lines &quot;, end='', flush=True)
+sleep(0.5)
+Cursor.SavePosition()
+sleep(0.5)
+print(&quot;Saved position&quot;, end='', flush=True)
+sleep(0.5)
+Cursor.LineDown(2)
+sleep(0.5)
+print(&quot;Down 2 lines&quot;, end='', flush=True)
+sleep(0.5)
+Cursor.Horizontal(28)
+sleep(0.5)
+print(&quot;X position 28&quot;, end='', flush=True)
+sleep(0.5)
+Cursor.Vertical(8)
+sleep(0.5)
+print(&quot;Y position 8&quot;, end='', flush=True)
+sleep(0.5)
+Cursor.SetPosition(11, 2)
+sleep(0.5)
+print(&quot;X position 11, Y position 2&quot;, flush=True)
+sleep(0.5)
+Cursor.Hide()
+sleep(0.5)
+print(&quot;Cursor hidden&quot;, flush=True)
+sleep(2)
+Cursor.Show()
+sleep(0.5)
+print(&quot;Cursor visible&quot;, flush=True)
+sleep(2)
+Cursor.DisableBlink()
+sleep(0.5)
+print(&quot;Cursor blink disabled&quot;, flush=True)
+sleep(2)
+Cursor.EnableBlink()
+sleep(0.5)
+print(&quot;Cursor blink enabled&quot;, flush=True)
+sleep(2)
+print(f&quot;Cursor position is: {cursor.get_position()}&quot;, flush=True)
+sleep(0.5)
+Cursor.RestorePosition()
+sleep(0.5)
+print(&quot;Cursor position restored to previous saved position&quot;, flush=True)
+</code></pre>
+
+![demo-cursor.gif](../images/demo-cursor.gif "demo-cursor.py")
+</details></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

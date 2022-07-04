@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Progress Bars - Pyco Documentation</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Pyco Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Welcome to MkDocs</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../home/" class="nav-link">Pyco</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../quick-start/" class="nav-link">Quick Start</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../sidebar/" class="nav-link">Sidebar</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Api <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../api/" class="dropdown-item">Api</a>
+</li>
+                                    
+<li>
+    <a href="../color/" class="dropdown-item">Color</a>
+</li>
+                                    
+<li>
+    <a href="../constants/" class="dropdown-item">Constants</a>
+</li>
+                                    
+<li>
+    <a href="../cursor/" class="dropdown-item">Cursor</a>
+</li>
+                                    
+<li>
+    <a href="../io/" class="dropdown-item">Terminal Printing and Input</a>
+</li>
+                                    
+<li>
+    <a href="../logging/" class="dropdown-item">Logging</a>
+</li>
+                                    
+<li>
+    <a href="../prefix/" class="dropdown-item">Prefixes</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">Progress Bars</a>
+</li>
+                                    
+<li>
+    <a href="../terminal/" class="dropdown-item">Terminal</a>
+</li>
+                                    
+<li>
+    <a href="../text/" class="dropdown-item">Text</a>
+</li>
+                                    
+<li>
+    <a href="../utils/" class="dropdown-item">Utils</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../prefix/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../terminal/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#progress-bars" class="nav-link">Progress Bars</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#create-instance" class="nav-link">Create Instance</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#update" class="nav-link">Update</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#example" class="nav-link">Example</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="progress-bars">Progress Bars</h1>
+<p>Show progress bars in the terminal with the <code>ProgressBar</code> class. Create an instance with any desired arguments, then use the <code>update()</code> method to update the progress bar in a loop where your progress happens. If less time has passed than the number of milliseconds in <code>update_interval</code>, the progress bar will not update to avoid slowing down your code with large numbers of terminal output calls.</p>
+<h2 id="create-instance">Create Instance</h2>
+<pre><code class="language-python">progress.ProgressBar(iteration: int, total: int, prefix: str, suffix: str, length: int, fill: str, empty_fill: str, decimals: int, end: str, update_interval: int)
+</code></pre>
+<h3 id="parameters">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>iteration</code></td>
+<td><code>int</code></td>
+<td><code>0</code></td>
+<td>Iteration of the progress bar (how full it is)</td>
+</tr>
+<tr>
+<td><code>total</code></td>
+<td><code>int</code></td>
+<td><code>50</code></td>
+<td>Total number of iterations in the progress bar</td>
+</tr>
+<tr>
+<td><code>prefix</code></td>
+<td><code>str</code></td>
+<td><code>''</code></td>
+<td>Prefix before the progress bar</td>
+</tr>
+<tr>
+<td><code>suffix</code></td>
+<td><code>str</code></td>
+<td><code>''</code></td>
+<td>Suffix after the progress bar</td>
+</tr>
+<tr>
+<td><code>length</code></td>
+<td><code>int</code></td>
+<td><code>50</code></td>
+<td>Number of characters in the progress bar</td>
+</tr>
+<tr>
+<td><code>fill</code></td>
+<td><code>str</code></td>
+<td><code>'█'</code></td>
+<td>Character to fill the progress bar with</td>
+</tr>
+<tr>
+<td><code>empty_fill</code></td>
+<td><code>str</code></td>
+<td><code>'-'</code></td>
+<td>Character to fill the empty part of the progress bar with</td>
+</tr>
+<tr>
+<td><code>decimals</code></td>
+<td><code>int</code></td>
+<td><code>1</code></td>
+<td>Number of decimals to show in the percent</td>
+</tr>
+<tr>
+<td><code>end</code></td>
+<td><code>str</code></td>
+<td><code>'\r'</code></td>
+<td>Character(s) to print at the end</td>
+</tr>
+<tr>
+<td><code>update_interval</code></td>
+<td><code>int</code></td>
+<td><code>100</code></td>
+<td>Interval after which to update the progress bar in milliseconds</td>
+</tr>
+</tbody>
+</table>
+<h2 id="update">Update</h2>
+<pre><code class="language-python">ProgressBar.update(iteration: int, force: bool, **kwargs)
+</code></pre>
+<h3 id="parameters_1">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>iteration</code></td>
+<td><code>int\|None</code></td>
+<td><code>None</code></td>
+<td>Iteration of the progress bar (how full it is)</td>
+</tr>
+<tr>
+<td><code>force</code></td>
+<td><code>bool</code></td>
+<td><code>False</code></td>
+<td>Force the progress bar to be updated regardless of <code>update_interval</code></td>
+</tr>
+</tbody>
+</table>
+<p>All arguments specified when <a href="#create-instance">creating an instance</a> can also be changed in the <code>update()</code> function.</p>
+<h2 id="example">Example</h2>
+<details>
+<summary>Click to expand</summary>
+
+
+<pre><code class="language-python">from pyco import *
+import time
+
+bar = ProgressBar(prefix=&quot;Example progress bar&quot;)
+for i in range(101):
+    bar.Update(i)
+    time.sleep(0.1)
+</code></pre>
+
+![demo-progress-bar.gif](../images/demo-progress-bar.gif "demo-progress-bar.py")
+</details></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

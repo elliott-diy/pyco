@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Color - Pyco Documentation</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Pyco Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Welcome to MkDocs</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../home/" class="nav-link">Pyco</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../quick-start/" class="nav-link">Quick Start</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../sidebar/" class="nav-link">Sidebar</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Api <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../api/" class="dropdown-item">Api</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">Color</a>
+</li>
+                                    
+<li>
+    <a href="../constants/" class="dropdown-item">Constants</a>
+</li>
+                                    
+<li>
+    <a href="../cursor/" class="dropdown-item">Cursor</a>
+</li>
+                                    
+<li>
+    <a href="../io/" class="dropdown-item">Terminal Printing and Input</a>
+</li>
+                                    
+<li>
+    <a href="../logging/" class="dropdown-item">Logging</a>
+</li>
+                                    
+<li>
+    <a href="../prefix/" class="dropdown-item">Prefixes</a>
+</li>
+                                    
+<li>
+    <a href="../progress/" class="dropdown-item">Progress Bars</a>
+</li>
+                                    
+<li>
+    <a href="../terminal/" class="dropdown-item">Terminal</a>
+</li>
+                                    
+<li>
+    <a href="../text/" class="dropdown-item">Text</a>
+</li>
+                                    
+<li>
+    <a href="../utils/" class="dropdown-item">Utils</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../api/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../constants/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#color" class="nav-link">Color</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#4-bit-colors" class="nav-link">4-Bit Colors</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#8-bit-colors" class="nav-link">8-Bit Colors</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#24-bit-colors" class="nav-link">24-Bit Colors</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#styles" class="nav-link">Styles</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#defaults" class="nav-link">Defaults</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#examples" class="nav-link">Examples</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="color">Color</h1>
+<p>Color escape code constants and functions. You can combine constants when using them in [<code>print_message()</code>] or [<code>user_input()</code>], or in other output functions.</p>
+<h2 id="4-bit-colors">4-Bit Colors</h2>
+<p>The original ANSI escape codes for 16 colors (8 normal and 8 bright) can be found as constants under both <code>Color.Fore</code> and <code>Color.Back</code> classes. The precise RGB values for each of the constants will vary depending on the terminal.</p>
+<h3 id="constants">Constants</h3>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BLACK</code></td>
+<td>Black</td>
+</tr>
+<tr>
+<td><code>RED</code></td>
+<td>Red</td>
+</tr>
+<tr>
+<td><code>GREEN</code></td>
+<td>Green</td>
+</tr>
+<tr>
+<td><code>YELLOW</code></td>
+<td>Yellow</td>
+</tr>
+<tr>
+<td><code>BLUE</code></td>
+<td>Blue</td>
+</tr>
+<tr>
+<td><code>MAGENTA</code></td>
+<td>Magenta</td>
+</tr>
+<tr>
+<td><code>CYAN</code></td>
+<td>Cyan</td>
+</tr>
+<tr>
+<td><code>WHITE</code></td>
+<td>Gray</td>
+</tr>
+<tr>
+<td><code>BRIGHT_BLACK</code></td>
+<td>Bright black/dark gray</td>
+</tr>
+<tr>
+<td><code>BRIGHT_RED</code></td>
+<td>Bright red</td>
+</tr>
+<tr>
+<td><code>BRIGHT_GREEN</code></td>
+<td>Bright green</td>
+</tr>
+<tr>
+<td><code>BRIGHT_YELLOW</code></td>
+<td>Bright yellow</td>
+</tr>
+<tr>
+<td><code>BRIGHT_BLUE</code></td>
+<td>Bright blue</td>
+</tr>
+<tr>
+<td><code>BRIGHT_MAGENTA</code></td>
+<td>Bright magenta</td>
+</tr>
+<tr>
+<td><code>BRIGHT_CYAN</code></td>
+<td>Bright cyan</td>
+</tr>
+<tr>
+<td><code>BRIGHT_WHITE</code></td>
+<td>Bright white</td>
+</tr>
+<tr>
+<td><code>DEFAULT</code></td>
+<td>Default, usually <code>WHITE</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="8-bit-colors">8-Bit Colors</h2>
+<p>Most terminals support a palette of 256 colors, accessible with the <code>eight_bit()</code> function. For a detailed list of colors see <a href="https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit">https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit</a>.</p>
+<p><code>eight_bit()</code> takes one parameter which is the number of the color from <code>0</code> to <code>255</code>.</p>
+<h2 id="24-bit-colors">24-Bit Colors</h2>
+<p>Some terminals support standard RGB values such as <code>(53, 174, 89)</code>. The <code>rgb()</code> and <code>hex()</code> functions allow you to set the foreground or background color from an RGB tuple or HEX string respectively.</p>
+<h2 id="styles">Styles</h2>
+<p>Style modifiers to change the look of the text.</p>
+<h3 id="constants_1">Constants</h3>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>RESET</code></td>
+<td>Reset all color and style values to their default values</td>
+</tr>
+<tr>
+<td><code>BOLD</code></td>
+<td>Bold text, interpreted as "bright color" on some terminals</td>
+</tr>
+<tr>
+<td><code>DIM</code></td>
+<td>Dark text, not supported on some terminals</td>
+</tr>
+<tr>
+<td><code>ITALIC</code></td>
+<td>Italicized text, not supported on some terminals</td>
+</tr>
+<tr>
+<td><code>UNDERLNE</code></td>
+<td>Underlined text</td>
+</tr>
+<tr>
+<td><code>SLOW_BLINK</code></td>
+<td>Slowly blinking text, not supported on some terminals</td>
+</tr>
+<tr>
+<td><code>FAST_BLINK</code></td>
+<td>Fast blinking text, not supported on some terminals</td>
+</tr>
+<tr>
+<td><code>INVERT</code></td>
+<td>Invert the foreground and background colors</td>
+</tr>
+<tr>
+<td><code>STRIKE</code></td>
+<td>Striked out text, not supported on some terminals</td>
+</tr>
+<tr>
+<td><code>DOUBLE_UNDERLINE</code></td>
+<td>Doubly underlined text, interpreted as "not bold" on some terminals</td>
+</tr>
+<tr>
+<td><code>NORMAL</code></td>
+<td>Reset all style values to their default values</td>
+</tr>
+<tr>
+<td><code>NO_UNDERLINE</code></td>
+<td>Not underlined text</td>
+</tr>
+<tr>
+<td><code>NO_INVERT</code></td>
+<td>Foreground and background colors not inverted</td>
+</tr>
+</tbody>
+</table>
+<h2 id="defaults">Defaults</h2>
+<p>You can change the default colors used in [<code>print_message()</code>] and [<code>user_input()</code>] by assigning variables in the <code>Color</code> class to a constant of your choice.</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DEFAULT_MESSAGE_COLOR</code></td>
+<td><code>Color.Fore.WHITE</code></td>
+<td>Default color for message text</td>
+</tr>
+<tr>
+<td><code>DEFAULT_PREFIX_COLOR</code></td>
+<td><code>Color.Fore.WHITE</code></td>
+<td>Default color for normal prefix text</td>
+</tr>
+<tr>
+<td><code>DEFAULT_INPUT_COLOR</code></td>
+<td><code>Color.Fore.WHITE</code></td>
+<td>Default color for user input text</td>
+</tr>
+<tr>
+<td><code>ERROR</code></td>
+<td><code>Color.Fore.BRIGHT_RED</code></td>
+<td>Default color for error prefixes</td>
+</tr>
+<tr>
+<td><code>WARNING</code></td>
+<td><code>Color.Fore.BRIGHT_YELLOW</code></td>
+<td>Default color for warning prefixes</td>
+</tr>
+<tr>
+<td><code>SUCCESS</code></td>
+<td><code>Color.Fore.BRIGHT_GREEN</code></td>
+<td>Default color for success prefixes</td>
+</tr>
+<tr>
+<td><code>INFO</code></td>
+<td><code>Color.Fore.WHITE</code></td>
+<td>Default color for info prefixes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<h3 id="demo-colorpy"><code>demo-color.py</code></h3>
+<details>
+<summary>Click to expand</summary>
+
+
+<pre><code class="language-python">from pyco import *
+
+print(Fore.DEFAULT + Back.DEFAULT + &quot;Plain text with default colors&quot; + Style.RESET)
+print(Fore.RED + Back.BRIGHT_YELLOW + &quot;Dark red text on a bright yellow background&quot; + Style.RESET)
+print(Fore.BRIGHT_GREEN + &quot;Bright green text&quot;)
+print(&quot;Text is still bright green&quot; + Style.RESET)
+print(&quot;Reset back to default colors&quot;)
+print(Style.BOLD + Fore.CYAN + &quot;Bold cyan text&quot; + Style.RESET)
+print(Style.INVERT + &quot;Foreground and background colors inverted&quot; + Style.RESET)
+print(Fore.EightBit(208) + &quot;Color value '208' from the 256-color palette&quot; + Style.RESET)
+print(Fore.TwentyFourBit((164, 43, 202)) + &quot;Purple text from RGB value&quot; + Style.RESET)
+print(Fore.TwentyFourBit('#f7346e') + &quot;Pink-red text from HEX value&quot; + Style.RESET)
+print(Style.BOLD + Style.UNDERLINE + Fore.TwentyFourBit((47, 237, 202)) + Back.TwentyFourBit((138, 92, 92)) + &quot;Bold underlined teal text on a red-gray background&quot; + Style.RESET)
+</code></pre>
+
+![demo-color.png](../images/demo-color.png "demo-color.py")
+</details>
+
+<h3 id="demo-color-4-bitpy"><code>demo-color-4-bit.py</code></h3>
+<details>
+<summary>Click to expand</summary>
+
+
+<pre><code class="language-python">from pyco import *
+
+print(Fore.BLACK   + &quot;Fore.BLACK  &quot; + &quot;\t\t&quot; + Fore.BRIGHT_BLACK   + &quot;Fore.BRIGHT_BLACK  &quot; + Style.RESET)
+print(Fore.RED     + &quot;Fore.RED    &quot; + &quot;\t\t&quot; + Fore.BRIGHT_RED     + &quot;Fore.BRIGHT_RED    &quot; + Style.RESET)
+print(Fore.GREEN   + &quot;Fore.GREEN  &quot; + &quot;\t\t&quot; + Fore.BRIGHT_GREEN   + &quot;Fore.BRIGHT_GREEN  &quot; + Style.RESET)
+print(Fore.YELLOW  + &quot;Fore.YELLOW &quot; + &quot;\t\t&quot; + Fore.BRIGHT_YELLOW  + &quot;Fore.BRIGHT_YELLOW &quot; + Style.RESET)
+print(Fore.BLUE    + &quot;Fore.BLUE   &quot; + &quot;\t\t&quot; + Fore.BRIGHT_BLUE    + &quot;Fore.BRIGHT_BLUE   &quot; + Style.RESET)
+print(Fore.MAGENTA + &quot;Fore.MAGENTA&quot; + &quot;\t\t&quot; + Fore.BRIGHT_MAGENTA + &quot;Fore.BRIGHT_MAGENTA&quot; + Style.RESET)
+print(Fore.CYAN    + &quot;Fore.CYAN   &quot; + &quot;\t\t&quot; + Fore.BRIGHT_CYAN    + &quot;Fore.BRIGHT_CYAN   &quot; + Style.RESET)
+print(Fore.WHITE   + &quot;Fore.WHITE  &quot; + &quot;\t\t&quot; + Fore.BRIGHT_WHITE   + &quot;Fore.BRIGHT_WHITE  &quot; + Style.RESET)
+print(Fore.DEFAULT + &quot;Fore.DEFAULT&quot; + Style.RESET)
+print()
+print(Back.BLACK   + &quot;Back.BLACK  &quot; + &quot;\t\t&quot; + Back.BRIGHT_BLACK   + &quot;Back.BRIGHT_BLACK  &quot; + Style.RESET)
+print(Back.RED     + &quot;Back.RED    &quot; + &quot;\t\t&quot; + Back.BRIGHT_RED     + &quot;Back.BRIGHT_RED    &quot; + Style.RESET)
+print(Back.GREEN   + &quot;Back.GREEN  &quot; + &quot;\t\t&quot; + Back.BRIGHT_GREEN   + &quot;Back.BRIGHT_GREEN  &quot; + Style.RESET)
+print(Back.YELLOW  + &quot;Back.YELLOW &quot; + &quot;\t\t&quot; + Back.BRIGHT_YELLOW  + &quot;Back.BRIGHT_YELLOW &quot; + Style.RESET)
+print(Back.BLUE    + &quot;Back.BLUE   &quot; + &quot;\t\t&quot; + Back.BRIGHT_BLUE    + &quot;Back.BRIGHT_BLUE   &quot; + Style.RESET)
+print(Back.MAGENTA + &quot;Back.MAGENTA&quot; + &quot;\t\t&quot; + Back.BRIGHT_MAGENTA + &quot;Back.BRIGHT_MAGENTA&quot; + Style.RESET)
+print(Back.CYAN    + &quot;Back.CYAN   &quot; + &quot;\t\t&quot; + Back.BRIGHT_CYAN    + &quot;Back.BRIGHT_CYAN   &quot; + Style.RESET)
+print(Back.WHITE   + &quot;Back.WHITE  &quot; + &quot;\t\t&quot; + Back.BRIGHT_WHITE   + &quot;Back.BRIGHT_WHITE  &quot; + Style.RESET)
+print(Back.DEFAULT + &quot;Back.DEFAULT&quot; + Style.RESET)
+</code></pre>
+
+![demo-color-4-bit.png](../images/demo-color-4-bit.png "demo-color-4-bit.py")
+</details>
+
+<h3 id="demo-color-8-bitpy"><code>demo-color-8-bit.py</code></h3>
+<details>
+<summary>Click to expand</summary>
+
+
+<pre><code class="language-python">from pyco import *
+
+for code in range(256):
+    print(f&quot;{Fore.EightBit(code)} {str(code).ljust(4)}&quot;, end='')
+
+    if code % 16 == 15:
+        print(Style.RESET)
+
+print()
+for code in range(256):
+    print(f&quot;{Back.EightBit(code)} {str(code).ljust(4)}&quot;, end='')
+
+    if code % 16 == 15:
+        print(Style.RESET)
+</code></pre>
+
+![demo-color-8-bit.png](../images/demo-color-8-bit.png "demo-color-8-bit.py")
+</details></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

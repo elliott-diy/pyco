@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Logging - Pyco Documentation</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Pyco Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Welcome to MkDocs</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../home/" class="nav-link">Pyco</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../quick-start/" class="nav-link">Quick Start</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../sidebar/" class="nav-link">Sidebar</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Api <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../api/" class="dropdown-item">Api</a>
+</li>
+                                    
+<li>
+    <a href="../color/" class="dropdown-item">Color</a>
+</li>
+                                    
+<li>
+    <a href="../constants/" class="dropdown-item">Constants</a>
+</li>
+                                    
+<li>
+    <a href="../cursor/" class="dropdown-item">Cursor</a>
+</li>
+                                    
+<li>
+    <a href="../io/" class="dropdown-item">Terminal Printing and Input</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">Logging</a>
+</li>
+                                    
+<li>
+    <a href="../prefix/" class="dropdown-item">Prefixes</a>
+</li>
+                                    
+<li>
+    <a href="../progress/" class="dropdown-item">Progress Bars</a>
+</li>
+                                    
+<li>
+    <a href="../terminal/" class="dropdown-item">Terminal</a>
+</li>
+                                    
+<li>
+    <a href="../text/" class="dropdown-item">Text</a>
+</li>
+                                    
+<li>
+    <a href="../utils/" class="dropdown-item">Utils</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../io/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../prefix/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#logging" class="nav-link">Logging</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#variables" class="nav-link">Variables</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#logging-messages" class="nav-link">Logging Messages</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#set-log-level" class="nav-link">Set Log Level</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#clear-log" class="nav-link">Clear Log</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#log-levels" class="nav-link">Log Levels</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#example" class="nav-link">Example</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="logging">Logging</h1>
+<p>The <code>logging</code> module contains methods and constants for logging entries into a log file. The logger is integrated with [<code>print_message()</code>] and [<code>user_input()</code>].</p>
+<h2 id="variables">Variables</h2>
+<p>Change these variables at the start of your script to alter the behavior of the logger.</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>log_path</code></td>
+<td><code>str</code></td>
+<td><code>'&lt;cwd&gt;/logs/log.txt'</code></td>
+<td>Full path of a text file to log entries into</td>
+</tr>
+<tr>
+<td><code>enable_message_logging</code></td>
+<td><code>bool</code></td>
+<td><code>False</code></td>
+<td>Enable or disable logging of messages</td>
+</tr>
+<tr>
+<td><code>enable_input_logging</code></td>
+<td><code>bool</code></td>
+<td><code>False</code></td>
+<td>Enable or disable logging of user inputs</td>
+</tr>
+<tr>
+<td><code>enable_timestamp</code></td>
+<td><code>bool</code></td>
+<td><code>True</code></td>
+<td>Enable or disable timestamps in log entries</td>
+</tr>
+<tr>
+<td><code>timestamp_format</code></td>
+<td><code>str</code></td>
+<td><code>'%Y-%m-%d %H:%M:%S%z'</code></td>
+<td>Timestamp format as a <a href="https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior"><code>datetime.datetime.strftime()</code></a> format string</td>
+</tr>
+<tr>
+<td><code>log_level</code></td>
+<td><code>int</code></td>
+<td><code>Level.ERROR</code></td>
+<td>Log level</td>
+</tr>
+</tbody>
+</table>
+<h2 id="logging-messages">Logging Messages</h2>
+<p>Use <code>log()</code> to log a message into the log file specified by <code>log_path</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>message</code></td>
+<td><code>str</code></td>
+<td><code>''</code></td>
+<td>The message of the log entry</td>
+</tr>
+<tr>
+<td><code>prefix</code></td>
+<td><code>str</code></td>
+<td><code>''</code></td>
+<td>The prefix before the message</td>
+</tr>
+</tbody>
+</table>
+<h2 id="set-log-level">Set Log Level</h2>
+<pre><code class="language-python">set_log_level(level: Level)
+</code></pre>
+<p>Set the log level using a constant from the <code>Level</code> class, or a string or integer corresponding to a constant in the <code>Level</code> class. You can also simply set the <code>log_level</code> variable to the desired value.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>level</code></td>
+<td><code>Level\|int\|str</code></td>
+<td>Log level from the <code>Level</code> class</td>
+</tr>
+</tbody>
+</table>
+<h2 id="clear-log">Clear Log</h2>
+<pre><code class="language-python">clear_log()
+</code></pre>
+<p>Clear the contents of the log file. The log file does not get deleted.</p>
+<h2 id="log-levels">Log Levels</h2>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Level.NONE</code></td>
+<td><code>0</code></td>
+<td>Dont log any messages</td>
+</tr>
+<tr>
+<td><code>Level.ERROR</code></td>
+<td><code>1</code></td>
+<td>Log errors</td>
+</tr>
+<tr>
+<td><code>Level.WARNING</code></td>
+<td><code>2</code></td>
+<td>Log warnings and errors</td>
+</tr>
+<tr>
+<td><code>Level.SUCCESS</code></td>
+<td><code>3</code></td>
+<td>Log successes, warnings, and errors</td>
+</tr>
+<tr>
+<td><code>Level.INFO</code></td>
+<td><code>4</code></td>
+<td>Log info, successes, warnings, and errors</td>
+</tr>
+<tr>
+<td><code>Level.ALL</code></td>
+<td><code>5</code></td>
+<td>Log everything</td>
+</tr>
+</tbody>
+</table>
+<h2 id="example">Example</h2>
+<details>
+<summary>Click to expand</summary>
+
+### `demo-logging.py`
+
+<pre><code class="language-python">from pyco import *
+
+Logger.ClearLog()
+Logger.enableMessageLogging = True
+Logger.Log(&quot;Log file gets created automatically&quot;, &quot;[Prefix]&quot;)
+print_message(&quot;Error messages logged by default&quot;, &quot;[ERROR]&quot;)
+Logger.Log(&quot;Log entry without a prefix&quot;)
+Logger.enableInputLogging = True
+user_input(&quot;Input logging enabled: &quot;)
+Logger.SetLogLevel(Logger.Level.ALL)
+print_message(&quot;Log level set to 'ALL'&quot;, &quot;[Prefix]&quot;)
+</code></pre>
+
+
+### `log.txt`
+
+<pre><code class="language-log">[2021-05-13 00:21:29-0000] [INFO] Cleared log file contents
+[2021-05-13 00:21:29-0000] [Prefix] Log file gets created automatically
+[2021-05-13 00:21:29-0000] [ERROR] Error messages logged by default
+[2021-05-13 00:21:29-0000] Log entry without a prefix
+[2021-05-13 00:21:30-0000] Input logging enabled: input
+[2021-05-13 00:21:30-0000] [Prefix] Log level set to 'ALL'
+</code></pre>
+
+</details></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

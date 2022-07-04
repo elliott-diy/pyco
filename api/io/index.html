@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Terminal Printing and Input - Pyco Documentation</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Pyco Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Welcome to MkDocs</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../home/" class="nav-link">Pyco</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../quick-start/" class="nav-link">Quick Start</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../sidebar/" class="nav-link">Sidebar</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Api <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../api/" class="dropdown-item">Api</a>
+</li>
+                                    
+<li>
+    <a href="../color/" class="dropdown-item">Color</a>
+</li>
+                                    
+<li>
+    <a href="../constants/" class="dropdown-item">Constants</a>
+</li>
+                                    
+<li>
+    <a href="../cursor/" class="dropdown-item">Cursor</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">Terminal Printing and Input</a>
+</li>
+                                    
+<li>
+    <a href="../logging/" class="dropdown-item">Logging</a>
+</li>
+                                    
+<li>
+    <a href="../prefix/" class="dropdown-item">Prefixes</a>
+</li>
+                                    
+<li>
+    <a href="../progress/" class="dropdown-item">Progress Bars</a>
+</li>
+                                    
+<li>
+    <a href="../terminal/" class="dropdown-item">Terminal</a>
+</li>
+                                    
+<li>
+    <a href="../text/" class="dropdown-item">Text</a>
+</li>
+                                    
+<li>
+    <a href="../utils/" class="dropdown-item">Utils</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../cursor/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../logging/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#terminal-printing-and-input" class="nav-link">Terminal Printing and Input</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#printing-messages" class="nav-link">Printing Messages</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#user-input" class="nav-link">User Input</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="terminal-printing-and-input">Terminal Printing and Input</h1>
+<h2 id="printing-messages">Printing Messages</h2>
+<p>Print messages in the terminal with customizable colors and prefixes using <code>print_message()</code>. Use this function instead of Python's built-in <code>print()</code>.
+Prefixes are automatically enclosed in square brackets.
+Certain prefixes are automatically highlighted according to constants in the <code>Color</code> class.
+You may override preset colors.</p>
+<h3 id="prefixes">Prefixes</h3>
+<table>
+<thead>
+<tr>
+<th>Prefix</th>
+<th>Constant</th>
+<th>Default Color</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ERROR</code></td>
+<td><code>Color.ERROR</code></td>
+<td><code>Color.Fore.BRIGHT_RED</code></td>
+</tr>
+<tr>
+<td><code>WARNING</code></td>
+<td><code>Color.WARNING</code></td>
+<td><code>Color.Fore.BRIGHT_YELLOW</code></td>
+</tr>
+<tr>
+<td><code>SUCCESS</code></td>
+<td><code>Color.SUCCESS</code></td>
+<td><code>Color.Fore.BRIGHT_GREEN</code></td>
+</tr>
+<tr>
+<td><code>INFO</code></td>
+<td><code>Color.INFO</code></td>
+<td><code>Color.Fore.WHITE</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="parameters">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>message</code></td>
+<td><code>str</code></td>
+<td><code>''</code></td>
+<td>The message you want to print in the console</td>
+</tr>
+<tr>
+<td><code>prefix</code></td>
+<td><code>str\|None</code></td>
+<td><code>None</code></td>
+<td>The prefix before the message</td>
+</tr>
+<tr>
+<td><code>message_color</code></td>
+<td><code>Color</code></td>
+<td><code>Color.AUTO</code></td>
+<td>The color of the message. If <code>AUTO</code>, it will use <code>Color.DEFAULT_MESSAGE_COLOR</code></td>
+</tr>
+<tr>
+<td><code>prefix_color</code></td>
+<td><code>Color</code></td>
+<td><code>Color.AUTO</code></td>
+<td>The color of the prefix. If <code>AUTO</code>, it will color according to the prefix.</td>
+</tr>
+<tr>
+<td><code>color_brackets</code></td>
+<td><code>bool</code></td>
+<td><code>False</code></td>
+<td>Specify whether to color the brackets surrounding the prefix or not</td>
+</tr>
+<tr>
+<td><code>log</code></td>
+<td><code>bool\|None</code></td>
+<td><code>None</code></td>
+<td>Log the message in the log file. If <code>None</code>, it will log according to <code>Logger.enableMessageLogging</code> and <code>Logger.logLevel</code></td>
+</tr>
+<tr>
+<td><code>sep</code></td>
+<td><code>str</code></td>
+<td><code>' '</code></td>
+<td>Separator, directly passed to <code>print()</code></td>
+</tr>
+<tr>
+<td><code>end</code></td>
+<td><code>str</code></td>
+<td><code>\n</code></td>
+<td>String to print at the end, directly passed to <code>print()</code></td>
+</tr>
+<tr>
+<td><code>flush</code></td>
+<td><code>bool</code></td>
+<td><code>False</code></td>
+<td>Flush the output buffer to show changes immediately, directly passed to <code>print()</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="example">Example</h3>
+<details>
+<summary>Click to expand</summary>
+
+
+<pre><code class="language-python">from pyco import *
+
+print_message(&quot;This is a normal message&quot;)
+print_message(&quot;This is an error message&quot;, prefix=&quot;ERROR&quot;)
+print_message(&quot;This is a warning message&quot;, prefix=&quot;WARNING&quot;)
+print_message(&quot;This is a success message&quot;, prefix=&quot;SUCCESS&quot;)
+print_message(&quot;This is an info message&quot;, prefix=&quot;INFO&quot;)
+print_message(&quot;Automatic prefix highlighting is case insensitive&quot;, &quot;Success&quot;)
+print_message(&quot;This is a message with a custom prefix&quot;, prefix=&quot;Custom Prefix&quot;)
+print_message(&quot;This is a message with a custom color&quot;, messageColor=Color.Fore.BRIGHT_CYAN)
+print_message(&quot;You can combine custom prefixes and colors&quot;, prefix=&quot;Example&quot;, prefixColor=Color.Fore.BRIGHT_MAGENTA)
+print_message(&quot;You can even override preset message colors&quot;, prefix=&quot;ERROR&quot;, prefixColor=Color.Fore.BRIGHT_GREEN)
+print_message(&quot;You can set the colors for the message and prefix separately&quot;, prefix=&quot;Example&quot;, messageColor=Color.Fore.RED, prefixColor=Color.Fore.YELLOW)
+print_message(&quot;For even more customizability, you can choose whether to color only the prefix,&quot;, prefix=&quot;INFO&quot;, prefixColor=Color.Fore.BRIGHT_BLUE)
+print_message(&quot;Or the brackets as well&quot;, prefix=&quot;INFO&quot;, prefixColor=Color.Fore.BRIGHT_BLUE, colorBrackets=True)
+print_message(&quot;This message has been logged in the log file&quot;, prefix=&quot;INFO&quot;, log=True)
+</code></pre>
+
+![demo-print-message.png](../images/demo-print-message.png "demo-print-message.py")
+</details>
+
+<h2 id="user-input">User Input</h2>
+<p>Get user input from the terminal with colors using <code>user_input()</code>. Use this function instead of Python's built-in <code>input()</code>.</p>
+<h3 id="parameters_1">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>prefix</code></td>
+<td><code>str</code></td>
+<td><code>''</code></td>
+<td>The prompt before the user's input</td>
+</tr>
+<tr>
+<td><code>prefix_color</code></td>
+<td><code>Color</code></td>
+<td><code>Color.DEFAULT_PREFIX_COLOR</code></td>
+<td>The color of the prefix</td>
+</tr>
+<tr>
+<td><code>input_color</code></td>
+<td><code>Color</code></td>
+<td><code>Color.DEFAULT_INPUT_COLOR</code></td>
+<td>The color of the user's input</td>
+</tr>
+<tr>
+<td><code>log</code></td>
+<td><code>bool\|None</code></td>
+<td><code>None</code></td>
+<td>Log the prompt and input in the log file. If <code>None</code>, it will log according to <code>Logger.enableInputLogging</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="example_1">Example</h3>
+<details>
+<summary>Click to expand</summary>
+
+
+<pre><code class="language-python">from pyco import *
+
+user_input(&quot;Plain prompt: &quot;)
+user_input(&quot;Prompt in green: &quot;, Fore.GREEN)
+user_input(&quot;Prompt in bright red, user input in cyan: &quot;, Fore.BRIGHT_RED, Fore.CYAN)
+user_input(&quot;Prompt in blue on a bright white background, user input in bright magenta with an underline: &quot;, Fore.BLUE + Back.BRIGHT_WHITE, Fore.BRIGHT_MAGENTA + Style.UNDERLINE)
+user_input(&quot;This prompt and following user input has been logged: &quot;, log=True)
+</code></pre>
+
+![demo-user-input.png](../images/demo-user-input.png "demo-user-input.py")
+</details></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

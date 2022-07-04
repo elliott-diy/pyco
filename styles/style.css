@@ -1,0 +1,32 @@
+:root {
+  color-scheme: dark;
+  --base-font-size: 16px;
+  --theme-color: rgb(53, 176, 233);
+  /* --base-background-color: rgb(20, 20, 20); */
+  /* --base-background-color: rgb(13, 17, 23); */
+  --base-background-color: rgb(7, 7, 7);
+  --sidebar-background: var(--base-background-color);
+  --search-background: var(--code-theme-background);
+  --sidebar-toggle-background: var(--search-background);
+  --sidebar-border-color: var(--search-background);
+  --search-input-background-color: var(--search-background);
+  --search-input-border-color: var(--sidebar-border-color);
+  --selection-color: rgb(100, 100, 100);
+  --copycode-background: rgb(40, 40, 40);
+  --link-color: rgb(43, 146, 194);
+  --link-color-hover: rgb(53, 176, 233);
+  /* --code-theme-background: rgb(35, 35, 35); */
+  --code-theme-background: rgb(22, 27, 34);
+  --code-inline-background: var(--code-theme-background);
+  --code-theme-comment: rgb(106, 153, 85);
+  --code-theme-function: rgb(220, 220, 170);
+  --code-theme-keyword: rgb(197, 134, 192);
+  --code-theme-operator: var(--code-theme-punctuation);
+  --code-theme-punctuation: rgb(150, 150, 150);
+  --code-theme-selection: var(--selection-color);
+  --code-theme-selector: rgb(206, 145, 120);
+  /* --code-theme-selector: rgb(78, 201, 176); */
+  --code-theme-tag: rgb(181, 206, 168);
+  --code-theme-text: rgb(212, 212, 212);
+  --code-theme-variable: rgb(156, 220, 254);
+}

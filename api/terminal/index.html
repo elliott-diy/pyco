@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Terminal - Pyco Documentation</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Pyco Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Welcome to MkDocs</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../home/" class="nav-link">Pyco</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../quick-start/" class="nav-link">Quick Start</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../sidebar/" class="nav-link">Sidebar</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Api <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../api/" class="dropdown-item">Api</a>
+</li>
+                                    
+<li>
+    <a href="../color/" class="dropdown-item">Color</a>
+</li>
+                                    
+<li>
+    <a href="../constants/" class="dropdown-item">Constants</a>
+</li>
+                                    
+<li>
+    <a href="../cursor/" class="dropdown-item">Cursor</a>
+</li>
+                                    
+<li>
+    <a href="../io/" class="dropdown-item">Terminal Printing and Input</a>
+</li>
+                                    
+<li>
+    <a href="../logging/" class="dropdown-item">Logging</a>
+</li>
+                                    
+<li>
+    <a href="../prefix/" class="dropdown-item">Prefixes</a>
+</li>
+                                    
+<li>
+    <a href="../progress/" class="dropdown-item">Progress Bars</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">Terminal</a>
+</li>
+                                    
+<li>
+    <a href="../text/" class="dropdown-item">Text</a>
+</li>
+                                    
+<li>
+    <a href="../utils/" class="dropdown-item">Utils</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../progress/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../text/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#terminal" class="nav-link">Terminal</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#clear_screenmode-int" class="nav-link">clear_screen(mode: int)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#clear_linemode-int" class="nav-link">clear_line(mode: int)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#scroll_upn-int" class="nav-link">scroll_up(n: int)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#scroll_downn-int" class="nav-link">scroll_down(n: int)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#set_window_titletitle-str" class="nav-link">set_window_title(title: str)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#width_80" class="nav-link">width_80()</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#width_132" class="nav-link">width_132()</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#bell" class="nav-link">bell()</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#main_screen_buffer" class="nav-link">main_screen_buffer()</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#alt_screen_buffer" class="nav-link">alt_screen_buffer()</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#reset_all" class="nav-link">reset_all()</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#example" class="nav-link">Example</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="terminal">Terminal</h1>
+<p>Functions for interacting with the terminal window.</p>
+<h2 id="clear_screenmode-int"><code>clear_screen(mode: int)</code></h2>
+<p>Clear text in the terminal window.
+Note: Modes <code>2</code> and <code>3</code> may not work as expected on Windows.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mode</code></td>
+<td><code>int</code></td>
+<td><code>2</code></td>
+<td>Which text to clear, relative to the cursor</td>
+</tr>
+</tbody>
+</table>
+<h3 id="options">Options</h3>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code></td>
+<td>Clear all text from the cursor to the end of the screen</td>
+</tr>
+<tr>
+<td><code>1</code></td>
+<td>Clear all text from the cursor to the beginning of the screen</td>
+</tr>
+<tr>
+<td><code>2</code></td>
+<td>Clear all text</td>
+</tr>
+<tr>
+<td><code>3</code></td>
+<td>Clear all text and delete all lines saved in the scrollback buffer</td>
+</tr>
+</tbody>
+</table>
+<h2 id="clear_linemode-int"><code>clear_line(mode: int)</code></h2>
+<p>Clear text on the current line. Cursor position does not change.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mode</code></td>
+<td><code>int</code></td>
+<td><code>2</code></td>
+<td>Which text on the current line to clear, relative to the cursor</td>
+</tr>
+</tbody>
+</table>
+<h3 id="options_1">Options</h3>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code></td>
+<td>Clear all text from the cursor to the end of the line</td>
+</tr>
+<tr>
+<td><code>1</code></td>
+<td>Clear all text from the cursor to the beginning of the line</td>
+</tr>
+<tr>
+<td><code>2</code></td>
+<td>Clear the entire line</td>
+</tr>
+</tbody>
+</table>
+<h2 id="scroll_upn-int"><code>scroll_up(n: int)</code></h2>
+<p>Move the text up <code>n</code> number of lines.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>n</code></td>
+<td><code>int</code></td>
+<td><code>1</code></td>
+<td>Number of lines to move the text on screen up</td>
+</tr>
+</tbody>
+</table>
+<h2 id="scroll_downn-int"><code>scroll_down(n: int)</code></h2>
+<p>Move the text down <code>n</code> number of lines.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>n</code></td>
+<td><code>int</code></td>
+<td><code>1</code></td>
+<td>Number of lines to move the text on screen down</td>
+</tr>
+</tbody>
+</table>
+<h2 id="set_window_titletitle-str"><code>set_window_title(title: str)</code></h2>
+<p>Set the terminal window title.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><code>str</code></td>
+<td>The window title</td>
+</tr>
+</tbody>
+</table>
+<h2 id="width_80"><code>width_80()</code></h2>
+<p>Set the terminal width to <code>80</code> columns.</p>
+<h2 id="width_132"><code>width_132()</code></h2>
+<p>Set the terminal window width to <code>132</code> columns.</p>
+<h2 id="bell"><code>bell()</code></h2>
+<p>Play a sound.</p>
+<h2 id="main_screen_buffer"><code>main_screen_buffer()</code></h2>
+<p>Switch to the main screen buffer.</p>
+<h2 id="alt_screen_buffer"><code>alt_screen_buffer()</code></h2>
+<p>Switch to a new alternate screen buffer. This allows you to save the current terminal state, switch to a blank screen, then go back to the main screen using <code>main_screen_buffer()</code>.</p>
+<h2 id="reset_all"><code>reset_all()</code></h2>
+<p>Reset all terminal settings to their default values.</p>
+<h2 id="example">Example</h2>
+<details>
+<summary>Click to expand</summary>
+
+
+<pre><code class="language-python">from pyco import *
+import this
+from time import sleep
+
+Terminal.SetWindowTitle(&quot;Pyco Demo&quot;)
+sleep(0.5)
+Terminal.Bell()
+sleep(0.5)
+Terminal.ScrollUp()
+sleep(0.5)
+Terminal.ScrollDown()
+sleep(0.5)
+Cursor.LineUp(5)
+sleep(0.5)
+Cursor.Right(5)
+sleep(0.5)
+Terminal.ClearLine(0)
+sleep(0.5)
+Cursor.Up()
+sleep(0.5)
+Terminal.ClearLine(1)
+sleep(0.5)
+Cursor.Up()
+sleep(0.5)
+Terminal.ClearLine(2)
+sleep(0.5)
+Terminal.AltScreenBuffer()
+sleep(0.5)
+print(&quot;Text in the alternate screen buffer&quot;)
+sleep(0.5)
+Terminal.MainScreenBuffer()
+sleep(0.5)
+print(&quot;Text in the main screen buffer&quot;)
+sleep(0.5)
+Terminal.ClearScreen()
+</code></pre>
+
+![demo-terminal.gif](../images/demo-terminal.gif "demo-terminal.py")
+</details></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

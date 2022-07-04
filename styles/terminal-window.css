@@ -1,0 +1,148 @@
+.terminal {
+  border-radius: 5px 5px 5px 5px;
+  position: relative;
+  background: rgb(30, 30, 30);
+  width: 100vmin;
+}
+
+.terminal .top {
+  background: #E8E6E8;
+  color: black;
+  padding: 5px;
+  border-radius: 5px 5px 0 0;
+}
+
+.terminal .btns {
+  position: absolute;
+  top: 7px;
+  left: 5px;
+}
+
+.terminal .circle {
+  width:  14px;
+  height: 14px;
+  display: inline-block;
+  border-radius: 15px;
+  margin-left: 2px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.title{
+  text-align: center;
+}
+
+.red {
+  background: #EC6A5F; border-color: #D04E42;
+}
+
+.green {
+  background: #64CC57; border-color: #4EA73B;
+}
+
+.yellow{
+  background: #F5C04F; border-color: #D6A13D;
+}
+
+.clear{
+  clear: both;
+}
+
+.terminal .body {
+  color: white;
+  padding: 8px;
+  overflow: auto;
+}
+
+.shadow {
+  box-shadow: 0px 0px 10px rgba(0,0,0,.4)
+}
+
+body {
+  padding: 10px;
+  height: calc(100vh - 8em);
+}
+
+.typewriter {
+  position: relative;
+  text-align: left;
+  font-size: 20px;
+  font-family: monospace;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+}
+
+.line1 {
+  animation: typewriter 2s steps(44) 0.5s 1 normal both;
+}
+
+.line2 {
+  animation: typewriter 2s steps(44) 2s 1 normal both;
+}
+
+.line3 {
+  animation: typewriter 0s steps(44) 5s 1 normal both;
+}
+
+.line4 {
+  animation: typewriter 0s steps(44) 5s 1 normal both;
+}
+
+.cursor {
+  animation: blink 1s infinite;
+}
+
+@keyframes typewriter{
+  from{width: 0;}
+  to{width: 24.1em;}
+}
+
+@keyframes blinkTextCursor{
+  from{border-right-color: rgba(255,255,255,.75);}
+  to{border-right-color: transparent;}
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+#container {
+  position: relative;
+}
+
+#background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 700px){
+  .mobilehidden{
+        display: none;
+  }
+}
+
+@media only screen and (min-width: 700px){
+  .desktophidden{
+        display: none;
+  }
+}
